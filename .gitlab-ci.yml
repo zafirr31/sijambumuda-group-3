@@ -11,6 +11,6 @@ publish:
   - apt-get update -qy
   - apt-get install -y ruby-dev
   - gem install dpl
-  - dpl --provider=heroku --app=sijambumuda-tiga --api-key=$HEROKU_APIKEY
+  - dpl --provider=heroku --app=sijambu-tiga --api-key=$HEROKU_APIKEY
   only:
   - master

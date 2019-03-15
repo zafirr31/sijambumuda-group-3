@@ -11,4 +11,4 @@ Nama Anggota :
 
 [![coverage report](https://gitlab.com/Haskucy/sijambumuda-kelompok-3/badges/master/coverage.svg)](https://gitlab.com/Haskucy/sijambumuda-kelompok-3/commits/master)
 
-Link Heroku: https://sijambumuda-kelompok3.herokuapp.com/
+Link Heroku: https://sijambumuda-tiga.herokuapp.com/

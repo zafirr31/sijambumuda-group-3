@@ -1,4 +1,9 @@
 from django.test import TestCase
+from django.test import Client
+from django.urls import resolve
+
+from .views import *
+
 
 class SampleTest(TestCase):
     # test eksistensi page form pinjam
@@ -8,7 +13,7 @@ class SampleTest(TestCase):
 
     def test_form_pinjam_using_index_func(self):
         found = resolve('/form-pinjam/')
-        self.assertEqual(found.func, views.pinjam)
+        self.assertEqual(found.func, pinjam)
 
     def test_status_template_form_pinjam_used(self):
         response = Client().get('/form-pinjam/')

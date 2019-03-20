@@ -25,15 +25,14 @@ class LandingPage(TestCase):
 class DataPage(TestCase):
 
     def test_data_page(self):
+        time = datetime.datetime.now()
         peminjaman = Peminjaman.objects.create(
                 book_title = "Test Title",
                 borrower_name = "Test Name",
-                borrow_time = datetime.datetime.now()
+                borrow_time = time,
             )
         response = Client().get('/datapeminjaman/')
-        self.assertIn("Judul Buku: ", response.content.decode('utf-8'))
-        self.assertIn("Peminjam: ", response.content.decode('utf-8'))
-        self.assertIn("Tanggal Peminjaman: ", response.content.decode('utf-8'))
+        self.assertIn("Judul Buku: Test Title; Peminjam: Test Name; Tanggal Peminjaman: " + time.strftime("%B %d, %Y") + " WIB", response.content.decode('utf-8'))
 
 
     def test_data_page_add(self):

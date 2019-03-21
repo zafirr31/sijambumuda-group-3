@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>X</title>
+</head>
+<body>
+
+	<section>
+		<h2>Data Peminjaman</h2>
+	</section>
+
+	{% for peminjaman in datapeminjaman %}
+		<div>
+			Judul Buku: {{ peminjaman.book_title }}; Peminjam: {{ peminjaman.borrower_name }}; Tanggal Peminjaman: {{ peminjaman.borrow_time }} WIB
+		</div>
+	{% endfor %}
+
+</body>
+</html>

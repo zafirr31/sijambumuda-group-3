@@ -23,11 +23,8 @@ from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('landingpage.urls')),
-<<<<<<< HEAD
     path('buku/', include('show_buku.urls')),
-=======
     path('form-pinjam/', include('shafiya_pinjam.urls')),
->>>>>>> 11ad9ac2c4fb82cf1c8b2021653908e2bc967722
 ]
 
 

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    Registrasi Anggota
+     <form method ="POST">
+       {% csrf_token %}
+       {{ form.as_p }}
+     <button type="submit" class="btn btn-primary">Daftar</button>
+    </form>
+  </body>
+</html>

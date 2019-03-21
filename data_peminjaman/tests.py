@@ -1,4 +1,7 @@
 from django.test import TestCase
+from django.test import Client
+from .models import *
+import datetime
 
 class DataPage(TestCase):
 

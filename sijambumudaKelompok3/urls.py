@@ -16,9 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from django.urls import include
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('landingpage.urls')),
+    path('buku/', include('show_buku.urls')),
     path('form-pinjam/', include('shafiya_pinjam.urls')),
+    path('datapeminjaman/', include('data_peminjaman.urls')),
+    path('registrasi-member', include('form_anggota.urls')),
 ]
+
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -38,12 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'landingpage',
-<<<<<<< HEAD
     'form_anggota',
-=======
     'show_buku',
     'shafiya_pinjam',
->>>>>>> 412ecf5140ce44dbe80002ee98d6e836ad17e12c
 ]
 
 MIDDLEWARE = [

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'form_anggota',
     'show_buku',
     'shafiya_pinjam',
+    'data_peminjaman',
 ]
 
 MIDDLEWARE = [

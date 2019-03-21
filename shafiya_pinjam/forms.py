@@ -1,5 +1,6 @@
 from django import forms
 from .models import PinjamModel
+from form_anggota.models import Member
 
 class PinjamForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={
@@ -21,3 +22,10 @@ class PinjamForm(forms.Form):
         'required':'True',
         'placeholder':'Tanggal Pinjam?',
     }))
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        db = Member.objects.all().values('Username').first()['Username']
+        
+        if username not in db:
+            raise forms.ValidationError("Username tidak ada")

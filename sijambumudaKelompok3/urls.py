@@ -25,7 +25,7 @@ urlpatterns = [
     path('', include('landingpage.urls')),
     path('buku/', include('show_buku.urls')),
     path('form-pinjam/', include('shafiya_pinjam.urls')),
-    path('registrasi_member', include('form_anggota.urls')),
+    path('registrasi-member', include('form_anggota.urls')),
 ]
 
 

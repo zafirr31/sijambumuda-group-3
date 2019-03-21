@@ -6,6 +6,7 @@ from django.http import HttpRequest
 from .views import *
 from .models import PinjamModel
 from .forms import PinjamForm
+from form_anggota.models import Member
 
 class SampleTest(TestCase):
     # test eksistensi page form pinjam
@@ -65,5 +66,13 @@ class SampleTest(TestCase):
         )
 
     def test_form(self):
+        dummy_member = Member.objects.create(
+            Nama = "Shafiya",
+            Nomor_Identitas = "1806235845",
+            Username = "shafiya123",
+            Email = "2019-03-25",
+            Password = "adzhani",
+            Alamat_Rumah = "Depok"
+        )
         response = Client().post('/form-pinjam/',{'username':'shafiya123'})
         self.assertIn("</form>",response.content.decode())

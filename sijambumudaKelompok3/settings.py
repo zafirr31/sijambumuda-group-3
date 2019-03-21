@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'landingpage',
     'show_buku',
     'shafiya_pinjam',
+    'data_peminjaman',
 ]
 
 MIDDLEWARE = [

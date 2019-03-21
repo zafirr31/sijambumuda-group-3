@@ -7,6 +7,11 @@
     <title>Peminjaman Buku</title>
 </head>
 <body>
-    
+    <h1>Peminjaman Buku</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+    <button type="submit" class="btn btn-light">Submit</button>
+    </form>
 </body>
 </html>

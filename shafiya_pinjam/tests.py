@@ -1,9 +1,11 @@
 from django.test import TestCase
 from django.test import Client
 from django.urls import resolve
+from django.http import HttpRequest
 
 from .views import *
-
+from .models import PinjamModel
+from .forms import PinjamForm
 
 class SampleTest(TestCase):
     # test eksistensi page form pinjam
@@ -18,3 +20,50 @@ class SampleTest(TestCase):
     def test_status_template_form_pinjam_used(self):
         response = Client().get('/form-pinjam/')
         self.assertTemplateUsed(response, 'page/form-pinjam.html')
+
+    # test untuk model
+    def test_pinjam_models_created(self):
+        dummy_pinjam = PinjamModel.objects.create(
+            username = "shafiya123",
+            email = "shafiya123@gmail.com",
+            nomor_buku = "01 - Sapiens",
+            tanggal_pinjam = "2019-03-25"
+        )
+        total_pinjam = PinjamModel.objects.all().count()
+        self.assertEqual(total_pinjam, 1)
+    
+    def test_formusername_validated(self):
+        form = PinjamForm(data={'username':''})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(
+            form.errors['username'],
+            ['This field is required.']
+        )
+
+    def test_formemail_validated(self):
+        form = PinjamForm(data={'email':''})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(
+            form.errors['email'],
+            ['This field is required.']
+        )
+
+    def test_formnobuku_validated(self):
+        form = PinjamForm(data={'nomor_buku':''})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(
+            form.errors['nomor_buku'],
+            ['This field is required.']
+        )
+
+    def test_tanggalpinjam_validated(self):
+        form = PinjamForm(data={'tanggal_pinjam':''})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(
+            form.errors['tanggal_pinjam'],
+            ['This field is required.']
+        )
+
+    def test_form(self):
+        response = Client().post('/form-pinjam/',{'username':'shafiya123'})
+        self.assertIn("</form>",response.content.decode())

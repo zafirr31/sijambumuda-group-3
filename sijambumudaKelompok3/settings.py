@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'landingpage',
+    'form_anggota',
     'show_buku',
     'shafiya_pinjam',
     'data_peminjaman',

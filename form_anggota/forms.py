@@ -7,3 +7,6 @@ class DaftarMember(forms.ModelForm):
         fields = ('Nama', 'Nomor_Identitas',
         'Username', 'Email',
         'Password','Alamat_Rumah')
+        widgets = {
+            'Password': forms.PasswordInput(),
+        }

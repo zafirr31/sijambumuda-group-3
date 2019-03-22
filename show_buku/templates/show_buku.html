@@ -33,17 +33,19 @@
         </div>
         </nav> 
 
-    <h1 class="title-center" style="margin-left: 20%; margin-right: 20%; margin-bottom: 10%; margin-top:5%;padding: 3%;">Daftar Buku</h1>
+    <h1 class="title-center" style="margin-left: 20%; margin-right: 20%; margin-top:5%;padding: 3%;">Daftar Buku</h1>
         {% for data in data_base %}
-        <div class="row border rounded d-flex flex-row ">
+        <div class="border">
+            <div class="flex-container">
             <img src="{{ data.cover.url }}" alt="" class="img-thumbnail">
-            <div class="d-flex flex-column">
-                <p class="mb-0 mt-10">Nomor Buku    : {{ data.nomor_buku }}</p>
-                <p class="mb-0">Judul Buku    : {{ data.judul_buku }}</p>
-                <p class="mb-0">Pengarang     : {{ data.pengarang }}</p>
-                <p class="mb-0">Kategori      : {{ data.kategori }}</p>
-                <p class="mb-0">Penerbit      : {{ data.penerbit }}</p>
-                <p class="mb-10">Sinopsis      : {{ data.sinopsis }}</p>
+            <div class="mx-auto">
+                <p class="mb-0 mt-10"><b>Nomor Buku    :</b> {{ data.nomor_buku }}</p>
+                <p class="mb-0"><b>Judul Buku</b>    : {{ data.judul_buku }}</p>
+                <p class="mb-0"><b>Pengarang</b>     : {{ data.pengarang }}</p>
+                <p class="mb-0"><b>Kategori</b>      : {{ data.kategori }}</p>
+                <p class="mb-0"><b>Penerbit</b>      : {{ data.penerbit }}</p>
+                <p class="mb-10"><b>Sinopsis</b>      : {{ data.sinopsis }}</p>
+            </div>
             </div>
         </div>
         {% endfor %}

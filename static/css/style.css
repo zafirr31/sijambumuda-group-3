@@ -1,0 +1,74 @@
+
+
+* {
+    font-family: 'Lato', sans-serif;
+    color: #000000;
+}
+
+.container-fluid {
+    color: #FFFFFF;
+    text-decoration: none;
+    background: #6C63FF;
+    font-size: 26px;
+}
+
+a {
+    border: none;
+    background: none;
+    color: #ffffff;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.landing-photo{
+    max-width: 40%;
+    height: auto;
+}
+
+.mx-auto{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 5%;
+}
+
+.judul{
+    font-style: bold;
+    font-size: 70px;
+}
+
+.singkatan{
+    font-size: 20px;
+}
+
+.dalam-border{
+    border: #6C63FF 3px solid;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 10%;
+    margin-top:5%;
+    padding: 3%;
+    border-radius: 25px;
+}
+
+.title-center{
+    text-align: center;
+}
+
+.btn{
+    background-color: #6C63FF;
+    border-radius: 25px;
+}
+
+table{
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+.brand:hover{
+    color: #FFFFFF;
+}

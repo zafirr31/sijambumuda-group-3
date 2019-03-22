@@ -81,7 +81,7 @@ class SampleTest(TestCase):
         )
         Client().post('/form-pinjam/', {"username": "test", "email": "test@test.com", "nomor_buku": 1})
         response1 = Client().get('/datapeminjaman/')
-        self.assertIn("Judul Buku: Test Judul; Peminjam: Test Nama; Tanggal Peminjaman: " + time.strftime("%B %d, %Y") + " WIB", response1.content.decode('utf-8'))
+        self.assertIn("<b>Judul Buku:</b> Test Judul; <b>Peminjam:</b> Test Nama; <b>Tanggal Peminjaman:</b> " + time.strftime("%B %d, %Y"), response1.content.decode('utf-8'))
 
     def test_buku_doesnt_exist(self):
         member = Member.objects.create(

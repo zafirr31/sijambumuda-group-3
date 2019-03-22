@@ -17,6 +17,7 @@ class PinjamForm(forms.Form):
     nomor_buku = forms.IntegerField(widget=forms.TextInput(attrs={
         'class':'form-control',
         'required':'True',
+        'placeholder':'Nomor Buku',
     }))
 
     def clean(self):

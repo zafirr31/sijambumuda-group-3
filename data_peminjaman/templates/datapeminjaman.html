@@ -33,12 +33,16 @@
         </nav> 
 
 	<section>
+<<<<<<< HEAD
+		<h2>Datax Peminjaman</h2>
+=======
 		<h1 class="title-center" style="margin-left: 20%; margin-right: 20%; margin-bottom: 10%; margin-top:5%;padding: 3%;">Data Peminjaman</h1>
+>>>>>>> 93b7d8b92856e14f6bc95888e6e8772d3937dde6
 	</section>
 
 	{% for peminjaman in datapeminjaman %}
 		<div>
-			Judul Buku: {{ peminjaman.book_title }}; Peminjam: {{ peminjaman.borrower_name }}; Tanggal Peminjaman: {{ peminjaman.borrow_time }} WIB
+			Judul Buku: {{ peminjaman.buku_dipinjam }}; Peminjam: {{ peminjaman.nama_peminjam }}; Tanggal Peminjaman: {{ peminjaman.tanggal_pinjam }} WIB
 		</div>
 	{% endfor %}
 

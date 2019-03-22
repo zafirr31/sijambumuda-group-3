@@ -6,4 +6,6 @@ class PinjamModel(models.Model):
     username = models.CharField(max_length=20)
     email = models.EmailField(max_length=50)
     nomor_buku = models.CharField(max_length=50)
-    tanggal_pinjam = models.DateField(auto_now_add=True,blank=True)
+    tanggal_pinjam = models.DateField(auto_now_add=True, blank=True)
+    nama_peminjam = models.CharField(max_length=100)
+    buku_dipinjam = models.CharField(max_length=100)

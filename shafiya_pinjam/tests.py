@@ -7,6 +7,7 @@ from .views import *
 from .models import PinjamModel
 from .forms import PinjamForm
 from form_anggota.models import Member
+import datetime
 
 class SampleTest(TestCase):
     # test eksistensi page form pinjam
@@ -24,11 +25,12 @@ class SampleTest(TestCase):
 
     # test untuk model
     def test_pinjam_models_created(self):
+        time = datetime.datetime.now()
         dummy_pinjam = PinjamModel.objects.create(
             username = "shafiya123",
             email = "shafiya123@gmail.com",
-            nomor_buku = "01 - Sapiens",
-            tanggal_pinjam = "2019-03-25"
+            nomor_buku = "1",
+            tanggal_pinjam = time,
         )
         total_pinjam = PinjamModel.objects.all().count()
         self.assertEqual(total_pinjam, 1)
@@ -56,15 +58,7 @@ class SampleTest(TestCase):
             form.errors['nomor_buku'],
             ['This field is required.']
         )
-
-    def test_tanggalpinjam_validated(self):
-        form = PinjamForm(data={'tanggal_pinjam':''})
-        self.assertFalse(form.is_valid())
-        self.assertEqual(
-            form.errors['tanggal_pinjam'],
-            ['This field is required.']
-        )
-
+        
     def test_form(self):
         dummy_member = Member.objects.create(
             Nama = "Shafiya",

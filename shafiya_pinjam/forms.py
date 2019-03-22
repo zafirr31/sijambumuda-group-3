@@ -20,8 +20,9 @@ class PinjamForm(forms.Form):
     }))
 
     def clean(self):
-        username = self.cleaned_data['username']
-        buku = int(self.cleaned_data['nomor_buku'])
+        cleaned_data = super(PinjamForm, self).clean()
+        check_username = cleaned_data.get('username')
+        buku = cleaned_data.get('nomor_buku')
 
         db_username = []
         for i in Member.objects.all().values('Username'):
@@ -31,7 +32,7 @@ class PinjamForm(forms.Form):
         for i in Buku.objects.all().values('nomor_buku'):
             db_buku.append(i['nomor_buku'])            
         
-        if username not in db_username:
+        if check_username not in db_username:
             raise forms.ValidationError("Username tidak ada")
         if buku not in db_buku:
             raise forms.ValidationError("Buku tidak ada")

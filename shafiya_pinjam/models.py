@@ -1,5 +1,4 @@
 from django.db import models
-from form_anggota.models import Member
 
 # Create your models here.
 class PinjamModel(models.Model):

@@ -1,15 +1,48 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Form Anggota</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
   <body>
-    Registrasi Anggota
-     <form method ="POST">
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/" style="color:#ffff; font-size:100%; margin-top:4%; ">SIJAMBU MUDA</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/registrasi-member"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;">Jadi Anggota</button></a></li>
+                <li><a href="/buku"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;""></span>Daftar Buku</button></a></li>
+                <li><a href="/form-pinjam"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Pinjam Buku</button></a></li>
+                <li><a href="/datapeminjaman"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Daftar Peminjaman</button></a></li>
+              </ul>
+            </div>
+        </div>
+        </nav> 
+
+    <div class="dalam-border" style="color:black;">
+    <h1 class="title-center">Registrasi Anggota</h1>
+    <hr>
+     <form method ="POST" class="form-horizontal">
        {% csrf_token %}
-       {{ form.as_p }}
-     <button type="submit" class="btn btn-primary">Daftar</button>
+       <table>
+       {{ form }}
+       </table>
+     <button type="submit" class="btn btn-primary" style="display: block; margin: 0 auto; margin-top:5%; width:30%; ">Daftar</button>
     </form>
+    </div>
   </body>
 </html>

@@ -1,6 +1,9 @@
 from django.test import TestCase
 from django.test import Client
 from .models import *
+from data_peminjaman.apps import DataPeminjamanConfig
+from django.apps import apps
+
 from shafiya_pinjam.models import PinjamModel
 from form_anggota.models import Member
 from show_buku.models import Buku
@@ -67,3 +70,8 @@ class DataPage(TestCase):
         )
         after = PinjamModel.objects.all().count()
         self.assertEqual(before + 1, after)
+
+class ConfigTest(TestCase):
+    def test_apps(self):
+        self.assertEqual(DataPeminjamanConfig.name, 'data_peminjaman')
+        self.assertEqual(apps.get_app_config('data_peminjaman').name, 'data_peminjaman')

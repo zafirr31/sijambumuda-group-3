@@ -2,6 +2,9 @@ from django.test import TestCase
 from django.test import Client
 from django.urls import resolve
 from django.http import HttpRequest
+from show_buku.apps import ShowBukuConfig
+from django.apps import apps
+
 from .views import buku
 from .models import Buku
 
@@ -38,3 +41,7 @@ class LandingPage(TestCase):
         html_response = response.content.decode('utf8')
         self.assertIn('Sapiens', html_response)
 
+class ConfigTest(TestCase):
+    def test_apps(self):
+        self.assertEqual(ShowBukuConfig.name, 'show_buku')
+        self.assertEqual(apps.get_app_config('show_buku').name, 'show_buku')

@@ -9,11 +9,11 @@ from .views import *
 class FormAnggota(TestCase):
 
     def test_form_member_url_ada(self):
-        response = Client().get('/registrasi-member')
+        response = Client().get('/registrasi-member/')
         self.assertEqual(response.status_code, 200)
 
     def test_form_member_fungsi_index(self):
-        found = resolve('/registrasi-member')
+        found = resolve('/registrasi-member/')
         self.assertEqual(found.func, registrasi_member)
 
     def test_form_member_isi_html(self):

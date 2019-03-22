@@ -2,6 +2,9 @@ from django.test import TestCase
 from django.test import Client
 from django.urls import resolve
 from django.http import HttpRequest
+from landingpage.apps import LandingpageConfig
+from django.apps import apps
+
 from .views import *
 from .models import *
 import datetime
@@ -21,3 +24,8 @@ class LandingPage(TestCase):
         response = index(request)
         html_response = response.content.decode('utf8')
         self.assertIn('SIJAMBU MUDA', html_response)
+
+class ConfigTest(TestCase):
+    def test_apps(self):
+        self.assertEqual(LandingpageConfig.name, 'landingpage')
+        self.assertEqual(apps.get_app_config('landingpage').name, 'landingpage')

@@ -72,3 +72,19 @@ table{
 .brand:hover{
     color: #FFFFFF;
 }
+
+.border{
+    border: #6C63FF 3px solid;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 3%;
+    border-radius: 25px;
+}
+
+.data-border{
+    border: #6C63FF 3px solid;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 3%;
+    border-radius: 25px;
+}

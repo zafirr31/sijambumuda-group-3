@@ -26,6 +26,3 @@ def pinjam(request):
         pinjam_form = PinjamForm()
 
     return render(request, 'page/form-pinjam.html', {'form': pinjam_form})
-
-def form_borrow(request):
-    return render(request, 'page/form-pinjam.html')

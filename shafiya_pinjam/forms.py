@@ -18,14 +18,6 @@ class PinjamForm(forms.Form):
         'class':'form-control',
         'required':'True',
     }))
-<<<<<<< HEAD
-=======
-    tanggal_pinjam= forms.DateField(widget=forms.TextInput(attrs={
-        'class':'form-control',
-        'required':'True',
-        'placeholder':'Tanggal Pinjam?',
-    }))
->>>>>>> 93b7d8b92856e14f6bc95888e6e8772d3937dde6
 
     def clean(self):
         cleaned_data = super(PinjamForm, self).clean()

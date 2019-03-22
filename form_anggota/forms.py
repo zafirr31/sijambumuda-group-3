@@ -2,16 +2,6 @@ from django import forms
 from .models import Member
 
 class DaftarMember(forms.ModelForm):
-<<<<<<< HEAD
-    class Meta:
-        model = Member
-        fields = ('Nama', 'Nomor_Identitas',
-        'Username', 'Email',
-        'Password','Alamat_Rumah')
-        widgets = {
-            'Password': forms.PasswordInput(),
-        }
-=======
 
 	class Meta:
 		model = Member
@@ -70,4 +60,3 @@ class DaftarMember(forms.ModelForm):
 		'Username', 'Email',
 		'Password','Alamat_Rumah')
 
->>>>>>> 31d5e7717491a431c5d46a67ba95ac3c981bceea

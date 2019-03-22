@@ -20,4 +20,4 @@ class LandingPage(TestCase):
         request = HttpRequest()
         response = index(request)
         html_response = response.content.decode('utf8')
-        self.assertIn('Hello world', html_response)
+        self.assertIn('SIJAMBU MUDA', html_response)

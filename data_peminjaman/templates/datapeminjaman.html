@@ -39,7 +39,7 @@
 
 	{% for peminjaman in datapeminjaman %}
 		<div class="data-border">
-			Judul Buku: {{ peminjaman.buku_dipinjam }}; Peminjam: {{ peminjaman.nama_peminjam }}; Tanggal Peminjaman: {{ peminjaman.tanggal_pinjam }} WIB
+			<b>Judul Buku:</b> {{ peminjaman.buku_dipinjam }}; <b>Peminjam:</b> {{ peminjaman.nama_peminjam }}; <b>Tanggal Peminjaman:</b> {{ peminjaman.tanggal_pinjam }}
 		</div>
 	{% endfor %}
 

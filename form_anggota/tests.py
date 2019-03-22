@@ -7,7 +7,6 @@ from datetime import datetime
 from .views import *
 
 class FormAnggota(TestCase):
-
     def test_form_member_url_ada(self):
         response = Client().get('/registrasi-member/')
         self.assertEqual(response.status_code, 200)

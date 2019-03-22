@@ -2,6 +2,8 @@ from django.test import TestCase
 from django.test import Client
 from django.urls import resolve
 from django.http import HttpRequest
+from shafiya_pinjam.apps import ShafiyaPinjamConfig
+from django.apps import apps
 
 from .views import *
 from .models import PinjamModel
@@ -52,7 +54,7 @@ class SampleTest(TestCase):
         )
 
     def test_formnobuku_validated(self):
-        form = PinjamForm(data={'nomor_buku':''})
+        form = PinjamForm(data={'nomor_buku': ''})
         self.assertFalse(form.is_valid())
         self.assertEqual(
             form.errors['nomor_buku'],
@@ -60,13 +62,44 @@ class SampleTest(TestCase):
         )
         
     def test_form(self):
-        dummy_member = Member.objects.create(
-            Nama = "Shafiya",
-            Nomor_Identitas = "1806235845",
-            Username = "shafiya123",
-            Email = "2019-03-25",
-            Password = "adzhani",
-            Alamat_Rumah = "Depok"
+        time = datetime.datetime.now()
+        buku = Buku.objects.create(
+            nomor_buku = 1,
+            judul_buku = "Test Judul",
+            pengarang = "Test Pengarang",
+            kategori = "Test Kategori",
+            penerbit = "Test Penerbit",
+            sinopsis = "Test Sinopsis",
         )
-        response = Client().post('/form-pinjam/',{'username':'shafiya123'})
-        self.assertIn("</form>",response.content.decode())
+        member = Member.objects.create(
+            Nama = "Test Nama",
+            Nomor_Identitas = 31,
+            Username = "test",
+            Email = "test@test.com",
+            Password = "Test Password",
+            Alamat_Rumah = "Test Alamat",
+        )
+        Client().post('/form-pinjam/', {"username": "test", "email": "test@test.com", "nomor_buku": 1})
+        response1 = Client().get('/datapeminjaman/')
+        self.assertIn("Judul Buku: Test Judul; Peminjam: Test Nama; Tanggal Peminjaman: " + time.strftime("%B %d, %Y") + " WIB", response1.content.decode('utf-8'))
+
+    def test_buku_doesnt_exist(self):
+        member = Member.objects.create(
+            Nama = "Test Nama",
+            Nomor_Identitas = 31,
+            Username = "test",
+            Email = "test@test.com",
+            Password = "Test Password",
+            Alamat_Rumah = "Test Alamat",
+        )
+        response = Client().post("/form-pinjam/", {"username": "test", "email": "test@test.com", "nomor_buku": "1"})
+        self.assertIn("Buku tidak ada", response.content.decode('utf-8'))
+
+    def test_member_doesnt_exist(self):
+        response = Client().post("/form-pinjam/", {"username": "test", "email": "test@test.com", "nomor_buku": "1"})
+        self.assertIn("Username tidak ada", response.content.decode('utf-8'))
+
+class ConfigTest(TestCase):
+    def test_apps(self):
+        self.assertEqual(ShafiyaPinjamConfig.name, 'shafiya_pinjam')
+        self.assertEqual(apps.get_app_config('shafiya_pinjam').name, 'shafiya_pinjam')

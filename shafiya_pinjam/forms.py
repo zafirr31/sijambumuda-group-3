@@ -14,7 +14,7 @@ class PinjamForm(forms.Form):
         'required':'True',
         'placeholder':'Email Anda',
     }))
-    nomor_buku = forms.CharField(widget=forms.TextInput(attrs={
+    nomor_buku = forms.IntegerField(widget=forms.TextInput(attrs={
         'class':'form-control',
         'required':'True',
     }))

@@ -1,6 +1,5 @@
 from django.test import TestCase
 from django.test import Client
-from .models import *
 from data_peminjaman.apps import DataPeminjamanConfig
 from django.apps import apps
 
@@ -43,7 +42,7 @@ class DataPage(TestCase):
 
     def test_data_page_add(self):
         time = datetime.datetime.now()
-        before = Peminjaman.objects.all().count()
+        before = PinjamModel.objects.all().count()
         buku = Buku.objects.create(
             nomor_buku = "4",
             judul_buku = "Test Judul",

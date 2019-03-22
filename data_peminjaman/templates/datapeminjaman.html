@@ -6,12 +6,12 @@
 <body>
 
 	<section>
-		<h2>Data Peminjaman</h2>
+		<h2>Datax Peminjaman</h2>
 	</section>
 
 	{% for peminjaman in datapeminjaman %}
 		<div>
-			Judul Buku: {{ peminjaman.book_title }}; Peminjam: {{ peminjaman.borrower_name }}; Tanggal Peminjaman: {{ peminjaman.borrow_time }} WIB
+			Judul Buku: {{ peminjaman.buku_dipinjam }}; Peminjam: {{ peminjaman.nama_peminjam }}; Tanggal Peminjaman: {{ peminjaman.tanggal_pinjam }} WIB
 		</div>
 	{% endfor %}
 

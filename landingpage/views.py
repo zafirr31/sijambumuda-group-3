@@ -1,4 +1,9 @@
 from django.shortcuts import render
 
 def index(request):
-    return render(request, "index.html")
+	if request.session.has_key('username'):
+		user = request.session['username']
+	else:
+		user = ""
+	index_context = {'user': user}
+	return render(request, "index.html", index_context)

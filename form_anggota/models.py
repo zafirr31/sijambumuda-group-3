@@ -1,9 +1,16 @@
 from django.db import models
 
 class Member(models.Model):
-    Nama = models.CharField(max_length=250, primary_key=True)
-    Nomor_Identitas = models.CharField(max_length=100)
-    Username = models.CharField(max_length=250)
-    Email = models.EmailField(null=True, blank=True, unique=True)
-    Password = models.CharField(max_length=250)
-    Alamat_Rumah = models.CharField(max_length=500)
+
+	username = models.CharField(max_length=250)
+	email = models.EmailField(null=True, blank=True, unique=True)
+	password = models.CharField(max_length=250)
+
+class Profile(models.Model):
+	user = models.OneToOneField(
+			Member,
+			on_delete=models.CASCADE,
+			primary_key=True,
+		)
+	nomor_identitas = models.CharField(max_length=100)
+	alamat_rumah = models.CharField(max_length=500)

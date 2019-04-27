@@ -11,8 +11,10 @@ class RegisterMember(forms.Form):
 	re_password = forms.CharField(widget=forms.PasswordInput())
 
 	def clean(self):
+		# Cleans all fields
 
 		def clean_username(self):
+			# Checks if username is already in database
 			cleaned_data = super(RegisterMember, self).clean()
 
 			username = cleaned_data.get('username')
@@ -22,6 +24,7 @@ class RegisterMember(forms.Form):
 					)
 
 		def clean_email(self):
+			# Checks if email is already in database
 			cleaned_data = super(RegisterMember, self).clean()
 	
 			email = cleaned_data.get('email')
@@ -29,7 +32,7 @@ class RegisterMember(forms.Form):
 				raise forms.ValidationError(
 						'Email already taken!'
 					)
-		def clean_password():
+		def clean_password(self):
 			# Cleans password inputted, synchronously
 			cleaned_data = super(RegisterMember, self).clean()
 
@@ -40,8 +43,6 @@ class RegisterMember(forms.Form):
 			validation_1 = (len(password) >= 8)
 
 			# Password is equal to re_password 
-			print(password)
-			print(re_password)
 			validation_2 = (password == re_password)
 
 			# Password contains atleast one number
@@ -77,8 +78,6 @@ class RegisterMember(forms.Form):
 		clean_username(self)
 		clean_email(self)
 		clean_password(self)
-
-		
 
 class LoginMember(forms.Form):
 

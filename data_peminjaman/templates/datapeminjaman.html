@@ -34,12 +34,12 @@
         </nav> 
 
 	<section>
-		<h1 class="title-center" style="margin-left: 20%; margin-right: 20%; margin-bottom: 10%; margin-top:5%;padding: 3%;">Data Peminjaman</h1>
+		<h1 class="title-center" style="margin-left: 20%; margin-right: 20%; margin-top:5%;padding: 3%;">Data Peminjaman</h1>
 	</section>
 
 	{% for peminjaman in datapeminjaman %}
-		<div>
-			Judul Buku: {{ peminjaman.buku_dipinjam }}; Peminjam: {{ peminjaman.nama_peminjam }}; Tanggal Peminjaman: {{ peminjaman.tanggal_pinjam }} WIB
+		<div class="data-border">
+			<b>Judul Buku:</b> {{ peminjaman.buku_dipinjam }}; <b>Peminjam:</b> {{ peminjaman.nama_peminjam }}; <b>Tanggal Peminjaman:</b> {{ peminjaman.tanggal_pinjam }}
 		</div>
 	{% endfor %}
 

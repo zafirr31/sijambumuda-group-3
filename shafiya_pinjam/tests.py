@@ -37,7 +37,7 @@ class SampleTest(TestCase):
         total_pinjam = PinjamModel.objects.all().count()
         self.assertEqual(total_pinjam, 1)
     
-    def test_formusername_validated(self):
+    def test_form_username_validated(self):
         form = PinjamForm(data={'username':''})
         self.assertFalse(form.is_valid())
         self.assertEqual(
@@ -45,7 +45,7 @@ class SampleTest(TestCase):
             ['This field is required.']
         )
 
-    def test_formemail_validated(self):
+    def test_form_email_validated(self):
         form = PinjamForm(data={'email':''})
         self.assertFalse(form.is_valid())
         self.assertEqual(
@@ -53,7 +53,7 @@ class SampleTest(TestCase):
             ['This field is required.']
         )
 
-    def test_formnobuku_validated(self):
+    def test_form_nobuku_validated(self):
         form = PinjamForm(data={'nomor_buku': ''})
         self.assertFalse(form.is_valid())
         self.assertEqual(
@@ -72,25 +72,19 @@ class SampleTest(TestCase):
             sinopsis = "Test Sinopsis",
         )
         member = Member.objects.create(
-            Nama = "Test Nama",
-            Nomor_Identitas = 31,
-            Username = "test",
-            Email = "test@test.com",
-            Password = "Test Password",
-            Alamat_Rumah = "Test Alamat",
+            username = "test",
+            email = "test@test.com",
+            password = "hahahahahah"
         )
         Client().post('/form-pinjam/', {"username": "test", "email": "test@test.com", "nomor_buku": 1})
         response1 = Client().get('/datapeminjaman/')
-        self.assertIn("Judul Buku: Test Judul; Peminjam: Test Nama; Tanggal Peminjaman: " + time.strftime("%B %d, %Y") + " WIB", response1.content.decode('utf-8'))
+        self.assertIn("<b>Judul Buku:</b> Test Judul; <b>Peminjam:</b> test; <b>Tanggal Peminjaman:</b> " + time.strftime("%B %d, %Y"), response1.content.decode('utf-8'))
 
     def test_buku_doesnt_exist(self):
         member = Member.objects.create(
-            Nama = "Test Nama",
-            Nomor_Identitas = 31,
-            Username = "test",
-            Email = "test@test.com",
-            Password = "Test Password",
-            Alamat_Rumah = "Test Alamat",
+            username = "test",
+            email = "test@test.com",
+            password = "hahahahahah"
         )
         response = Client().post("/form-pinjam/", {"username": "test", "email": "test@test.com", "nomor_buku": "1"})
         self.assertIn("Buku tidak ada", response.content.decode('utf-8'))

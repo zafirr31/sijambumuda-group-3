@@ -21,12 +21,9 @@ class DataPage(TestCase):
             sinopsis = "Test Sinopsis",
         )
         member = Member.objects.create(
-            Nama = "Test Nama",
-            Nomor_Identitas = 31,
-            Username = "test",
-            Email = "test@test.com",
-            Password = "Test Password",
-            Alamat_Rumah = "Test Alamat",
+            username = "test",
+            email = "test@test.com",
+            password = "hahahahahah"
         )
         peminjaman = PinjamModel.objects.create(
             username = "test",
@@ -37,7 +34,7 @@ class DataPage(TestCase):
             buku_dipinjam = "Test Judul",
         )
         response = Client().get('/datapeminjaman/')
-        self.assertIn("Judul Buku: Test Judul; Peminjam: Test Nama; Tanggal Peminjaman: " + time.strftime("%B %d, %Y") + " WIB", response.content.decode('utf-8'))
+        self.assertIn("<b>Judul Buku:</b> Test Judul; <b>Peminjam:</b> Test Nama; <b>Tanggal Peminjaman:</b> " + time.strftime("%B %d, %Y"), response.content.decode('utf-8'))
 
 
     def test_data_page_add(self):
@@ -52,12 +49,9 @@ class DataPage(TestCase):
             sinopsis = "Test Sinopsis",
         )
         member = Member.objects.create(
-            Nama = "Test Nama",
-            Nomor_Identitas = 31,
-            Username = "test",
-            Email = "test@test.com",
-            Password = "Test Password",
-            Alamat_Rumah = "Test Alamat"
+            username = "test",
+            email = "test@test.com",
+            password = "hahahahahah"
         )
         peminjaman = PinjamModel.objects.create(
             username = "test",

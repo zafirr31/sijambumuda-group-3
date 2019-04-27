@@ -18,12 +18,10 @@ class LandingPage(TestCase):
     def test_landing_page_fungsi_index(self):
         found = resolve('/')
         self.assertEqual(found.func, index)
-
-    def test_landing_page_isi_html(self):
-        request = HttpRequest()
-        response = index(request)
-        html_response = response.content.decode('utf8')
-        self.assertIn('SIJAMBU MUDA', html_response)
+    
+    def test_dummy_page(self):
+        response = Client().get("/test")
+        self.assertEqual(response.status_code,404)
 
 class ConfigTest(TestCase):
     def test_apps(self):

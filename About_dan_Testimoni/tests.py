@@ -1,6 +1,7 @@
 from django.test import TestCase, Client
 from django.urls import resolve
 from django.http import HttpRequest
+from About_dan_Testimoni.apps import AboutDanTestimoniConfig
 
 from .models import Testimoni
 from .views import *

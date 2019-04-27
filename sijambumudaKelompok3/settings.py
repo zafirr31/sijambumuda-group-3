@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'show_buku',
     'shafiya_pinjam',
     'data_peminjaman',
+
+    'About_dan_Testimoni'
 ]
 
 MIDDLEWARE = [

@@ -31,7 +31,7 @@ class AboutDanTestimoni(TestCase):
         Tanggal_Pesan = time,
         )
 
-        jumlahMember = Member.objects.all().count()
+        jumlah_testimoni = Testimoni.objects.all().count()
         self.assertEqual(jumlahMember, 1 )
 
 

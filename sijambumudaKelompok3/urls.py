@@ -27,6 +27,7 @@ urlpatterns = [
     path('form-pinjam/', include('shafiya_pinjam.urls')),
     path('datapeminjaman/', include('data_peminjaman.urls')),
     path('registrasi-member/', include('form_anggota.urls')),
+    path('history/', include('history_pinjaman.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -32,7 +32,7 @@ class AboutDanTestimoni(TestCase):
         )
 
         jumlah_testimoni = Testimoni.objects.all().count()
-        self.assertEqual(jumlahMember, 1 )
+        self.assertEqual(jumlah_testimoni, 1 )
 
 
 

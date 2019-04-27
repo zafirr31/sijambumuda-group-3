@@ -34,7 +34,10 @@ class AboutDanTestimoni(TestCase):
         jumlah_testimoni = Testimoni.objects.all().count()
         self.assertEqual(jumlah_testimoni, 1 )
 
-
+    class ConfigTest(TestCase):
+        def test_apps(self):
+            self.assertEqual(AboutDanTestimoniConfig.name, 'About_dan_Testimoni')
+            self.assertEqual(apps.get_app_config('About_dan_Testimoni').name, 'About_dan_Testimoni')
 
 
 

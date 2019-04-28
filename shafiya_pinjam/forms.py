@@ -26,8 +26,8 @@ class PinjamForm(forms.Form):
         buku = cleaned_data.get('nomor_buku')
 
         db_username = []
-        for i in Member.objects.all().values('Username'):
-            db_username.append(i['Username'])
+        for i in Member.objects.all().values('username'):
+            db_username.append(i['username'])
 
         db_buku = []
         for i in Buku.objects.all().values('nomor_buku'):

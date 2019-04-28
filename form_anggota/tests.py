@@ -5,55 +5,47 @@ from django.http import HttpRequest
 from form_anggota.apps import FormAnggotaConfig
 from django.apps import apps
 
-from .models import Member
-from datetime import datetime
+from .models import *
 from .views import *
+from datetime import datetime
 
 class FormAnggota(TestCase):
     def test_form_member_url_ada(self):
-        response = Client().get('/registrasi-member/')
+        response = Client().get('/register/')
         self.assertEqual(response.status_code, 200)
 
-    def test_form_member_fungsi_index(self):
-        found = resolve('/registrasi-member/')
-        self.assertEqual(found.func, registrasi_member)
-
-    def test_form_member_isi_html(self):
-        request = HttpRequest()
-        response = registrasi_member(request)
-        html_response = response.content.decode('utf8')
-        self.assertIn('Registrasi Anggota', html_response)
-
-    def test_poststatus_model_registrasi_member(self):
-        testMember = Member.objects.create(
-        Nama = "Rendya Yuschak",
-        Nomor_Identitas = "1806205262",
-        Username  = "Haskucy",
-        Email = "rendyayuschak@gmail.com",
-        Password = "siapatahu?",
-        Alamat_Rumah = "Jalan Kotabaru no 15, Jakarta Pusat, Jakarta, 10150",
-        )
-
-        jumlahMember = Member.objects.all().count()
-        self.assertEqual(jumlahMember, 1 )
-
     def test_username_already_exists(self):
-        member = Member.objects.create(
-            Nama = "Test Nama",
-            Nomor_Identitas = 31,
-            Username = "test",
-            Email = "test@test.com",
-            Password = "Test Password",
-            Alamat_Rumah = "Test Alamat",
-        )
-        response = Client().post("/registrasi-member/", {"Nama": "Test Nama", "Nomor_Identitas": 31, "Username": "test", "Email": "test@test.com", "Password": "yayaya", "Alamat_Rumah": "Aceh"})
-        self.assertIn("Username sudah terdaftar", response.content.decode('utf-8'))
+        Client().post("/register/", {"username": "test", "email": "test@test.com", "password": "abcde1ABC", "re_password": "abcde1ABC"})
+        response = Client().post("/register/", {"username": "test", "email": "test@test.com", "password": "abcde1ABC", "re_password": "abcde1ABC"})
+        self.assertIn("Username already taken!", response.content.decode('utf-8'))
 
-    def test_create_user(self):
-        self.form = DaftarMember(data={"Nama": "Test Nama", "Nomor_Identitas": 31, "Username": "test", "Email": "test@test.com", "Password": "yayaya", "Alamat_Rumah": "Aceh"})
-        Client().post("/registrasi-member/", {"Nama": "Test Nama", "Nomor_Identitas": 31, "Username": "test", "Email": "test@test.com", "Password": "yayaya", "Alamat_Rumah": "Aceh"})
-        self.assertTrue(self.form.is_valid)
+    def test_email_already_exists(self):
+        Client().post("/register/", {"username": "test", "email": "test@test.com", "password": "abcde1ABC", "re_password": "abcde1ABC"})
+        response = Client().post("/register/", {"username": "testt", "email": "test@test.com", "password": "abcde1ABC", "re_password": "abcde1ABC"})
+        self.assertIn("Email already taken!", response.content.decode('utf-8'))
 
+    def test_password_invalid_length(self):
+        response = Client().post("/register/", {"username": "test", "email": "test@test.com", "password": "abcde", "re_password": "abcde"})
+        self.assertIn("Password must be atleast 8 characters long!", response.content.decode('utf-8'))
+
+    def test_password_doesnt_match(self):
+        response = Client().post("/register/", {"username": "test", "email": "test@test.com", "password": "abcdefgh", "re_password": "abcdefgg"})
+        self.assertIn("Passwords do not match!", response.content.decode('utf-8'))
+
+    def test_password_doesnt_contain_number(self):
+        response = Client().post("/register/", {"username": "test", "email": "test@test.com", "password": "abcdefgH", "re_password": "abcdefgH"})
+        self.assertIn("Password must contain atleast one number!", response.content.decode('utf-8'))
+
+    def test_password_doesnt_contain_uppercase(self):
+        response = Client().post("/register/", {"username": "test", "email": "test@test.com", "password": "abcdefg1", "re_password": "abcdefg1"})
+        self.assertIn("Password must contain atleast one uppercase character!", response.content.decode('utf-8'))
+
+    def test_create_user_and_see_if_user_is_made(self):
+        before = jumlahMember = Member.objects.all().count()
+        Client().post("/register/", {"username": "test", "email": "test@test.com", "password": "abcde1ABC", "re_password": "abcde1ABC"})
+        after = jumlahMember = Member.objects.all().count()
+        self.assertEqual(before + 1, after)
+        
 class ConfigTest(TestCase):
     def test_apps(self):
         self.assertEqual(FormAnggotaConfig.name, 'form_anggota')

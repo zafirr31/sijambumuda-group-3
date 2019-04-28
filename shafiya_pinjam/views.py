@@ -17,7 +17,7 @@ def pinjam(request):
                 email=pinjam_form.cleaned_data['email'], 
                 nomor_buku=pinjam_form.cleaned_data['nomor_buku'], 
                 tanggal_pinjam=datetime.datetime.now(),
-                nama_peminjam = Member.objects.filter(Username=pinjam_form.cleaned_data['username']).values()[0]["Nama"],
+                nama_peminjam = Member.objects.filter(username=pinjam_form.cleaned_data['username']).values()[0]["username"],
                 buku_dipinjam = Buku.objects.filter(nomor_buku=pinjam_form.cleaned_data['nomor_buku']).values()[0]["judul_buku"],
             )
             pinjam_model.save()

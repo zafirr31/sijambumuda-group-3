@@ -21,12 +21,9 @@ class DataPage(TestCase):
             sinopsis = "Test Sinopsis",
         )
         member = Member.objects.create(
-            Nama = "Test Nama",
-            Nomor_Identitas = 31,
-            Username = "test",
-            Email = "test@test.com",
-            Password = "Test Password",
-            Alamat_Rumah = "Test Alamat",
+            username = "test",
+            email = "test@test.com",
+            password = "hahahahahah"
         )
         peminjaman = PinjamModel.objects.create(
             username = "test",
@@ -52,12 +49,9 @@ class DataPage(TestCase):
             sinopsis = "Test Sinopsis",
         )
         member = Member.objects.create(
-            Nama = "Test Nama",
-            Nomor_Identitas = 31,
-            Username = "test",
-            Email = "test@test.com",
-            Password = "Test Password",
-            Alamat_Rumah = "Test Alamat"
+            username = "test",
+            email = "test@test.com",
+            password = "hahahahahah"
         )
         peminjaman = PinjamModel.objects.create(
             username = "test",

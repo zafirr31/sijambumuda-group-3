@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'show_buku',
     'shafiya_pinjam',
     'data_peminjaman',
-
+    'history_pinjaman',
     'About_dan_Testimoni'
 ]
 

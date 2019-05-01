@@ -4,11 +4,12 @@ from .models import PinjamModel
 from form_anggota.models import Member
 from show_buku.models import Buku
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 import datetime
 
 # Create your views here.
 
-
+@login_required
 def pinjam(request):
     if request.user.is_authenticated:
         request.session['username'] = request.user.username

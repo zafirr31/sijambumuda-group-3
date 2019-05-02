@@ -1,14 +1,9 @@
 from django.db import models
-
-class Member(models.Model):
-
-	username = models.CharField(max_length=250)
-	email = models.EmailField(null=True, unique=True)
-	password = models.CharField(max_length=250)
+from django.contrib.auth.models import User
 
 class Profile(models.Model):
-	member = models.OneToOneField(
-			Member,
+	user = models.OneToOneField(
+			User,
 			on_delete=models.CASCADE,
 			primary_key=True,
 		)

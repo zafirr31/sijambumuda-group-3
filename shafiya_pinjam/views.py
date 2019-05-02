@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .forms import PinjamForm
 from .models import PinjamModel
-from form_anggota.models import Member
 from show_buku.models import Buku
 from django.http import HttpResponseRedirect
 import datetime

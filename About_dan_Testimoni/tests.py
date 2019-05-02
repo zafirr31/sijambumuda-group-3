@@ -29,7 +29,7 @@ class AboutDanTestimoni(TestCase):
         testMember = Testimoni.objects.create(
         Username  = "somedude",
         Pesan = "website ini keren",
-        Tanggal_Pesan = datetime,
+        #Tanggal_Pesan = datetime,
         )
 
         jumlah_testimoni = Testimoni.objects.all().count()

@@ -22,6 +22,7 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('landingpage.urls')),
     path('buku/', include('show_buku.urls')),
     path('form-pinjam/', include('shafiya_pinjam.urls')),

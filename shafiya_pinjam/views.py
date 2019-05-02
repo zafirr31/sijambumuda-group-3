@@ -12,9 +12,9 @@ def pinjam(request):
     if request.method == "POST":
         pinjam_form = PinjamForm(request.POST)
         if pinjam_form.is_valid():
+            print(request.session.items())
             pinjam_model = PinjamModel(
-                username=pinjam_form.cleaned_data['username'],
-                email=pinjam_form.cleaned_data['email'], 
+                username=request.session['username'],
                 nomor_buku=pinjam_form.cleaned_data['nomor_buku'], 
                 tanggal_pinjam=datetime.datetime.now(),
                 nama_peminjam = Member.objects.filter(username=pinjam_form.cleaned_data['username']).values()[0]["username"],

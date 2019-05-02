@@ -25,7 +25,7 @@ class AboutDanTestimoni(TestCase):
         self.assertIn('Tentang SijambuMuda', html_response)
 
     def test_AboutDanTestimoni_model(self):
-        time = datetime.datetime.now()
+        #time = datetime.datetime.now()
         testMember = Testimoni.objects.create(
         Username  = "somedude",
         Pesan = "website ini keren",

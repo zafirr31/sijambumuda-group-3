@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'shafiya_pinjam',
     'data_peminjaman',
     'history_pinjaman',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -126,6 +129,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
@@ -139,3 +149,11 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '517078907196-b73bejtrqsnkg373c4c9fcnii6jcedn0.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '517078907196-eddk7a4o47t95jfcpgc148h6uiksgcjk.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'PZqa8wGztvcI4v70abJ1jEUU'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'eJVCmbNX7YVJ2vRWIgt2-HBY'

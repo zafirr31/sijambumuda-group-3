@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.template import RequestContext
 
 
 def index(request):
@@ -6,5 +7,5 @@ def index(request):
         user = request.session['username']
     else:
         user = ""
-    index_context = {'user': user}
-    return render(request, "index.html", index_context)
+    # index_context = {'user': user}
+    return render(request, "index.html")

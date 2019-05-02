@@ -11,7 +11,7 @@ def show_history(request):
     return render(request, 'history.html')
 
 def history_json(request):
-    if request.session["username"] != "":
+    if request.session.has_key("username"):
         username = request.session["username"]
         db_pinjam = PinjamModel.objects.filter(username=username)
         # db_buku = Buku.objects.all()

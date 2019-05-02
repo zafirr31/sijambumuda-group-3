@@ -8,7 +8,6 @@ from django.apps import apps
 from .views import *
 from .models import PinjamModel
 from .forms import PinjamForm
-from form_anggota.models import Member
 import datetime
 
 class SampleTest(TestCase):
@@ -65,11 +64,6 @@ class SampleTest(TestCase):
     #     self.assertIn("<b>Judul Buku:</b> Test Judul; <b>Peminjam:</b> test; <b>Tanggal Peminjaman:</b> " + time.strftime("%B %d, %Y"), response1.content.decode('utf-8'))
 
     def test_buku_doesnt_exist(self):
-        member = Member.objects.create(
-            username = "test",
-            email = "test@test.com",
-            password = "hahahahahah"
-        )
         response = Client().post("/form-pinjam/", {"nomor_buku": "1"})
         self.assertIn("Buku tidak ada", response.content.decode('utf-8'))
 

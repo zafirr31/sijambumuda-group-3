@@ -35,11 +35,18 @@
 
     <div class="container">
         <div class="col-md-6" id="profile">
-            <p>Hi, {{ username }}</p>
+            <p>Hi, {{ user.username }}</p>
             <h1 class="title">Profile</h1>
-            <p id="username">Username : {{ username }}</p>
-            <img src="{{ profile.profile_picture.url }}" alt="">
+            <p id="username">Username : {{ user.username }}</p>
+            <img src="{{ profile.profile_picture.url }}" alt="" class="img-responsive">
             <p id="alamat">Alamat : {{ profile.alamat_rumah }}</p>
+            <a href="/history/profile/">
+                <button 
+                type="button" 
+                class="btn btn-default navbar-btn" 
+                style="background-color:#ffff;">
+                </span>Edit Profile</button>
+            </a>
         </div>
         <div class="col-md-6" id="buku">
             <h1 class="title">Daftar Buku Yang Dipinjam</h1>

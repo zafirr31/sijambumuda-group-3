@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from shafiya_pinjam.models import PinjamModel
 from show_buku.models import Buku
-from form_anggota.models import Member, Profile
+from form_anggota.models import Profile
+from django.contrib.auth.models import User
 from .forms import ProfileForm
 from django.http import HttpResponseRedirect, JsonResponse
 
@@ -11,9 +12,9 @@ from django.http import HttpResponseRedirect, JsonResponse
 def show_history(request):
     if request.user.is_authenticated:
         username = request.user.username
-        member = Member.objects.get(username=username)
-        if Profile.objects.filter(member=member).exists():
-            profile = Profile.objects.get(member=member)
+        user = User.objects.get(username=username)
+        if Profile.objects.filter(user=user).exists():
+            profile = Profile.objects.get(user=user)
             return render(request, 'history.html', {'profile':profile, 'username':username})
         else :
             return render(request, 'history.html')
@@ -37,17 +38,17 @@ def history_json(request):
     return HttpResponseRedirect("/")
 
 def profile(request):
-    if request.session.has_key("username"):
+    if request.user.is_authenticated:
         if request.method == "POST" :
             form = ProfileForm(request.POST, request.FILES)
             if form.is_valid() :
-                member = Member.objects.get(username=request.session["username"])
+                user = User.objects.get(username=request.user.username)
                 propic = request.FILES['profile_picture']
                 address = form.cleaned_data["alamat_rumah"]
-                if Profile.objects.filter(member=member).exists() :
-                    query = Profile.objects.get(member=member)
+                if Profile.objects.filter(user=user).exists() :
+                    query = Profile.objects.get(user=user)
                     query.delete()
-                profile = Profile(member=member, profile_picture=propic, alamat_rumah=address)
+                profile = Profile(user=user, profile_picture=propic, alamat_rumah=address)
                 profile.save()
                 return HttpResponseRedirect("/history/")
         else :

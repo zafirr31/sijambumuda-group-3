@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import User
 from .models import *
 import re
 
@@ -18,19 +19,25 @@ class RegisterMember(forms.Form):
 			cleaned_data = super(RegisterMember, self).clean()
 
 			username = cleaned_data.get('username')
-			if Member.objects.filter(username=username).exists():
-				raise forms.ValidationError(
-						'Username already taken!'
-					)
+			try:
+				user = User.objects.get(username=username)
+			except:
+				return username
+			raise forms.ValidationError(
+					'Username already taken!'
+				)
 
 		def clean_email(self):
 			# Checks if email is already in database
 			cleaned_data = super(RegisterMember, self).clean()
 	
 			email = cleaned_data.get('email')
-			if Member.objects.filter(email=email).exists():
-				raise forms.ValidationError(
-						'Email already taken!'
+			try:
+				email_taken = User.objects.get(email=email)
+			except:
+				return email
+			raise forms.ValidationError(
+					'Email already taken!'
 					)
 		def clean_password(self):
 			# Cleans password inputted, synchronously

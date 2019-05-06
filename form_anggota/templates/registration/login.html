@@ -18,7 +18,7 @@
 		<form method ="POST" class="form-horizontal">
 			{% csrf_token %}
 			<table>
-				{{ login_form }}
+				{{ form.as_p }}
 			</table>
 			<button type="submit" class="btn btn-primary" style="display: block; margin: 0 auto; margin-top:5%; width:30%; ">Login</button>
 			<p><strong>-- OR --</strong></p>

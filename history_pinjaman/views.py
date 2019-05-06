@@ -9,19 +9,19 @@ from django.http import HttpResponseRedirect, JsonResponse
 # @login_required
 
 def show_history(request):
-    if request.session.has_key("username"):             # if request.user.is_authenticated :
-        username = request.session["username"]          # username = request.user.username
+    if request.user.is_authenticated:
+        username = request.user.username
         member = Member.objects.get(username=username)
         if Profile.objects.filter(member=member).exists():
-            profile = Profile.objects.get(member=member)    # profile = Profile.objects.get(member=request.user)
+            profile = Profile.objects.get(member=member)
             return render(request, 'history.html', {'profile':profile, 'username':username})
         else :
             return render(request, 'history.html')
     return HttpResponseRedirect("/login/")
 
 def history_json(request):
-    if request.session.has_key("username"):             # if request.user.is_authenticated :
-        username = request.session["username"]          # if request.user.username:
+    if request.user.is_authenticated:
+        username = request.user.username
         db_pinjam = PinjamModel.objects.filter(username=username)
         response_data = []
         for pinjam in db_pinjam:

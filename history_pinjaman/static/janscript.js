@@ -6,12 +6,8 @@ $(document).ready(function() {
         success: function(data) {
             var innerHTML = "";
             for (var i = 0; i < data.length; i++) {
-                nomorBuku = "<p>Nomor Buku : " + data[i].nomor_buku + "</p>";
-                judulBuku = "<p>Judul Buku : " + data[i].judul_buku + "</p>";
-                namaPengarang = "<p>Pengarang : " + data[i].pengarang + "</p>";
-                namaPenerbit = "<p>Penerbit : " + data[i].penerbit + "</p>";
-                tanggalPinjam = "<p>Tanggal Peminjaman : " + data[i].tanggal_pinjam  + "</p>"; 
-                innerHTML += "<li>" + nomorBuku + judulBuku + namaPengarang + namaPenerbit + tanggalPinjam + "</li>";
+                innerHTML += "<li>" + data[i].nomor_buku + " " + data[i].judul_buku + " " + data[i].pengarang + " " +
+                data[i].penerbit + " " + data[i].tanggal_pinjam + "</li>";
             }
             $("#history_buku").html(innerHTML);
         }

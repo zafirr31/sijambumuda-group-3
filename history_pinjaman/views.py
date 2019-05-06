@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from shafiya_pinjam.models import PinjamModel
 from show_buku.models import Buku
-from form_anggota.models import Member
 from django.http import HttpResponseRedirect, JsonResponse
 
 # Create your views here.
@@ -11,9 +10,9 @@ def show_history(request):
     return render(request, 'history.html')
 
 def history_json(request):
-    if request.session.has_key("username"):
-        username = request.session["username"]
-        db_pinjam = PinjamModel.objects.filter(username=username)
+    if request.user.is_authenticated:
+        email = request.user.email
+        db_pinjam = PinjamModel.objects.filter(email=email)
         # db_buku = Buku.objects.all()
         response_data = []
         for pinjam in db_pinjam:

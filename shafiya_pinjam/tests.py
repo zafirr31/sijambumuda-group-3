@@ -8,7 +8,6 @@ from django.apps import apps
 from .views import *
 from .models import PinjamModel
 from .forms import PinjamForm
-from form_anggota.models import Member
 import datetime
 
 class SampleTest(TestCase):
@@ -36,22 +35,6 @@ class SampleTest(TestCase):
         )
         total_pinjam = PinjamModel.objects.all().count()
         self.assertEqual(total_pinjam, 1)
-    
-    def test_form_username_validated(self):
-        form = PinjamForm(data={'username':''})
-        self.assertFalse(form.is_valid())
-        self.assertEqual(
-            form.errors['username'],
-            ['This field is required.']
-        )
-
-    def test_form_email_validated(self):
-        form = PinjamForm(data={'email':''})
-        self.assertFalse(form.is_valid())
-        self.assertEqual(
-            form.errors['email'],
-            ['This field is required.']
-        )
 
     def test_form_nobuku_validated(self):
         form = PinjamForm(data={'nomor_buku': ''})
@@ -81,17 +64,8 @@ class SampleTest(TestCase):
     #     self.assertIn("<b>Judul Buku:</b> Test Judul; <b>Peminjam:</b> test; <b>Tanggal Peminjaman:</b> " + time.strftime("%B %d, %Y"), response1.content.decode('utf-8'))
 
     def test_buku_doesnt_exist(self):
-        member = Member.objects.create(
-            username = "test",
-            email = "test@test.com",
-            password = "hahahahahah"
-        )
-        response = Client().post("/form-pinjam/", {"username": "test", "email": "test@test.com", "nomor_buku": "1"})
+        response = Client().post("/form-pinjam/", {"nomor_buku": "1"})
         self.assertIn("Buku tidak ada", response.content.decode('utf-8'))
-
-    def test_member_doesnt_exist(self):
-        response = Client().post("/form-pinjam/", {"username": "test", "email": "test@test.com", "nomor_buku": "1"})
-        self.assertIn("Username tidak ada", response.content.decode('utf-8'))
 
 class ConfigTest(TestCase):
     def test_apps(self):

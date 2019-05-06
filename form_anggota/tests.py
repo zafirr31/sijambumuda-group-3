@@ -41,9 +41,9 @@ class FormAnggota(TestCase):
         self.assertIn("Password must contain atleast one uppercase character!", response.content.decode('utf-8'))
 
     def test_create_user_and_see_if_user_is_made(self):
-        before = jumlahMember = Member.objects.all().count()
+        before = jumlahMember = User.objects.all().count()
         Client().post("/register/", {"username": "test", "email": "test@test.com", "password": "abcde1ABC", "re_password": "abcde1ABC"})
-        after = jumlahMember = Member.objects.all().count()
+        after = jumlahMember = User.objects.all().count()
         self.assertEqual(before + 1, after)
         
 class ConfigTest(TestCase):

@@ -8,6 +8,13 @@
       <!-- prettier-ignore -->
       {{ form }}
     </table>
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
     <button
       type="submit"
       class="btn btn-primary"

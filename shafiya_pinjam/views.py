@@ -26,12 +26,12 @@ def pinjam(request):
                     buku.save()
                     pinjam_model = PinjamModel.objects.create(username=username, nomor_buku=nomor_buku,
                                                               tanggal_pinjam=tanggal_pinjam)
+                    messages.success(
+                        request, "Terima kasih!\n Peminjaman Anda akan segera diproses.")
                 else:
-                    buku.kuota = 0
-                    buku.save()
+                    messages.info(
+                        request, "Maaf, buku habis")
                 pinjam_model.save()
-                messages.success(
-                    request, "Terima kasih!\n Peminjaman Anda akan segera diproses.")
                 return HttpResponseRedirect('/')
         else:
             pinjam_form = PinjamForm(request.POST)

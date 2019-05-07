@@ -24,12 +24,16 @@
                     <a class="navbar-brand" href="/" style="color:#ffff; font-size:100%; margin-top:4%; ">SIJAMBU MUDA</a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/register"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;">Jadi Anggota</button></a></li>
-                        <li><a href="/buku"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;""></span>Daftar Buku</button></a></li>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/history"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;">Catatan Pinjam</button></a></li>
+                        <li><a href="/buku"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Daftar Buku</button></a></li>
                         <li><a href="/form-pinjam"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Pinjam Buku</button></a></li>
                         <li><a href="/datapeminjaman"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Daftar Peminjaman</button></a></li>
-                        <li>{{ user.first_name }}</li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                            <li><button type="button" class="btn btn-default navbar-btn" style="background-color:#6C63FF;color:white; border:none; margin-top:20px; font-size: 20px;">Ubah Tema</button></li>
+                        <li><button type="button" class="btn btn-default navbar-btn" style="background-color:#6C63FF;color:white; border:none; margin-top:20px; font-size: 20px;">Hi, {{user.username}}</button></li>
+                        <li><a href="/logout"><button type="button" class="btn btn-default navbar-btn" style="background-color:red; border:none; color: white;"></span>Logout</button></a></li>
                     </ul>
                     </div>
                 </div>
@@ -46,13 +50,17 @@
             <a class="navbar-brand" href="/" style="color:#ffff; font-size:100%; margin-top:4%; ">SIJAMBU MUDA</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/register"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;">Jadi Anggota</button></a></li>
-                <li><a href="/buku"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;""></span>Daftar Buku</button></a></li>
-                <li><a href="/form-pinjam"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Pinjam Buku</button></a></li>
-                <li><a href="/datapeminjaman"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Daftar Peminjaman</button></a></li>
-            </ul>
-            </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/register"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;">Jadi Anggota</button></a></li>
+                    <li><a href="/buku"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Daftar Buku</button></a></li>
+                    <li><a href="/form-pinjam"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Pinjam Buku</button></a></li>
+                    <li><a href="/datapeminjaman"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Daftar Peminjaman</button></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><button type="button" class="btn btn-default navbar-btn" style="background-color:#6C63FF;color:white; border:none; margin-top:20px; font-size: 20px;">Ubah Tema</button></li>
+                    <li><a href="/login"><button type="button" class="btn btn-default navbar-btn" style="background-color:green; border:none; color: white;"></span>Login</button></a></li>
+                </ul>
+                </div>
         </div>
         </nav> 
         {% endif %}

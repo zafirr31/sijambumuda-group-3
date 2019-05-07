@@ -18,5 +18,5 @@ class PinjamForm(forms.Form):
         for i in Buku.objects.all().values('nomor_buku'):
             db_buku.append(i['nomor_buku'])
 
-        # if buku not in db_buku:
-        #     raise forms.ValidationError("Buku tidak ada")
+        if buku not in db_buku:
+            raise forms.ValidationError("Buku tidak ada")

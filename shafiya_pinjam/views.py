@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 import datetime
 from django.contrib import messages
+from django.db.models import F
 
 # Create your views here.
 
@@ -20,12 +21,14 @@ def pinjam(request):
                 nomor_buku = request.POST['nomor_buku']
                 tanggal_pinjam = datetime.datetime.now()
                 buku = Buku.objects.get(nomor_buku=nomor_buku)
-                if buku.kuota >= 1:
-                    buku.kuota -= 1
+                if buku.kuota > 0:
+                    buku.kuota = F('kuota') - 1
+                    buku.save()
                     pinjam_model = PinjamModel.objects.create(username=username, nomor_buku=nomor_buku,
                                                               tanggal_pinjam=tanggal_pinjam)
                 else:
                     buku.kuota = 0
+                    buku.save()
                 pinjam_model.save()
                 messages.success(
                     request, "Terima kasih!\n Peminjaman Anda akan segera diproses.")

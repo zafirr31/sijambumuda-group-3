@@ -1,23 +1,19 @@
 {% extends 'base.html' %} {% block content %}
 <div class="dalam-border" style="color:black;">
-  <h1 class="title-center">Login</h1>
-  <hr />
-  <form method="POST" class="form-horizontal">
-    {% csrf_token %}
-    <table>
-      {{ form.as_p }}
-    </table>
-    <button
-      type="submit"
-      class="btn btn-primary"
-      style="display: block; margin: 0 auto; margin-top:5%; width:30%; "
-    >
-      Login
-    </button>
-    <p><strong>-- OR --</strong></p>
-    <a href="{% url 'social:begin' 'google-oauth2' %}" style="color: blue"
-      >Login with Google</a
-    ><br />
-  </form>
+	<h1 class="title-center">Login</h1>
+	<hr />
+	<form method="POST" class="form-horizontal">
+		{% csrf_token %}
+		<table>
+			{{ form.as_p }}
+		</table>
+		<button type="submit" class="btn btn-primary" style="display: block; margin: 0 auto; margin-top:5%; width:30%; ">
+			Login
+		</button>
+		<p><strong>-- OR --</strong></p>
+		<a href="{% url 'social:begin' 'google-oauth2' %}"><img src="/static/images/google.png" alt="Login with Google"></a><br />
+	</form>
 </div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="/static/js/checkRegisterForms.js" type="text/javascript" charset="utf-8" async defer></script>
 {% endblock %}

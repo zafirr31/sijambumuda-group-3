@@ -17,14 +17,14 @@ def pinjam(request):
             pinjam_form = PinjamForm(request.POST)
             if pinjam_form.is_valid():
                 username = request.user.username
-                # email = Member.objects.get(username=username)['email']
-                nomor_buku = request.POST['nomor_buku']
+                nomor_buku = int(request.POST.get('nomor_buku'))
                 tanggal_pinjam = datetime.datetime.now()
                 buku = Buku.objects.get(nomor_buku=nomor_buku)
                 if buku.kuota > 0:
                     buku.kuota = F('kuota') - 1
                     buku.save()
-                    pinjam_model = PinjamModel.objects.create(username=username, nomor_buku=nomor_buku,
+                    judul_buku = Buku.objects.filter(nomor_buku=nomor_buku).values()[0]['judul_buku']
+                    pinjam_model = PinjamModel.objects.create(username=username, buku_dipinjam=judul_buku, nomor_buku=nomor_buku,
                                                               tanggal_pinjam=tanggal_pinjam)
                     messages.success(
                         request, "Terima kasih!\n Peminjaman Anda akan segera diproses.")

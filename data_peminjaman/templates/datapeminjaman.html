@@ -11,7 +11,7 @@
 {% for peminjaman in datapeminjaman %}
 <div class="data-border">
   <b>Judul Buku:</b> {{ peminjaman.buku_dipinjam }}; <b>Peminjam:</b>
-  {{ peminjaman.nama_peminjam }}; <b>Tanggal Peminjaman:</b>
+  {{ peminjaman.username }}; <b>Tanggal Peminjaman:</b>
   {{ peminjaman.tanggal_pinjam }}
 </div>
 {% endfor %} {% endblock %}

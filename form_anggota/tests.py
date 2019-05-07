@@ -40,11 +40,23 @@ class FormAnggota(TestCase):
         response = Client().post("/register/", {"username": "test", "email": "test@test.com", "password": "abcdefg1", "re_password": "abcdefg1"})
         self.assertIn("Password must contain atleast one uppercase character!", response.content.decode('utf-8'))
 
+    def test_password_doesnt_contain_lowercase(self):
+        response = Client().post("/register/", {"username": "test", "email": "test@test.com", "password": "ABCDEFG1", "re_password": "ABCDEFG1"})
+        self.assertIn("Password must contain atleast one lowercase character!", response.content.decode('utf-8'))
+
     def test_create_user_and_see_if_user_is_made(self):
         before = jumlahMember = User.objects.all().count()
         Client().post("/register/", {"username": "test", "email": "test@test.com", "password": "abcde1ABC", "re_password": "abcde1ABC"})
         after = jumlahMember = User.objects.all().count()
         self.assertEqual(before + 1, after)
+
+    def test_login(self):
+        User.objects.create_user('test123', 'test@test.com', 'TestPassword123', first_name="Test")
+        test_client = Client()
+        test_client.login(username="test123", password="TestPassword123")
+        response = test_client.get('/')
+        self.assertIn("Test", response.content.decode('utf-8'))
+
         
 class ConfigTest(TestCase):
     def test_apps(self):

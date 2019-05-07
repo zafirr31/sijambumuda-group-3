@@ -54,4 +54,8 @@ def profile(request):
         else :
             form = ProfileForm()
         return render(request, "proform.html", {"form": form})
+<<<<<<< HEAD
     return HttpResponseRedirect("/login/")
+=======
+    return HttpResponseRedirect("/login/")
+>>>>>>> c70cf14e65b40dae370759ed8db67a124dedf792

@@ -43,5 +43,11 @@
       {{ form }}
       <button type="submit"> Post Komentar</button>
     </form>
+    {% for testimoni in isi %}
+    <h2>{{ testimoni.Username }}</h2>
+    <p>{{ testimoni.Pesan }}</p>
+    <h4>{{ testimoni.Tanggal_Pesan }}</h4>
+    {% endfor %}
+  </body>
   </body>
 </html>

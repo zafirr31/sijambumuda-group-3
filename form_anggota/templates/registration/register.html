@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Form Anggota</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -35,13 +35,15 @@
 		<div class="dalam-border" style="color:black;">
 		<h1 class="title-center">Registrasi Anggota</h1>
 		<hr>
-		 <form method ="POST" class="form-horizontal">
-			 {% csrf_token %}
-			 <table>
-			 {{ register_form }}
-			 </table>
-		 <button type="submit" class="btn btn-primary" style="display: block; margin: 0 auto; margin-top:5%; width:30%; ">Daftar</button>
+		<form method ="POST" class="form-horizontal">
+			{% csrf_token %}
+			<table>
+			{{ register_form }}
+			</table>
+		<button type="submit" class="btn btn-primary" style="display: block; margin: 0 auto; margin-top:5%; width:30%; ">Daftar</button>
 		</form>
 		</div>
+
+		<script src="/static/js/checkRegisterForms.js" type="text/javascript" charset="utf-8" async defer></script>
 	</body>
 </html>

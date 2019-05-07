@@ -11,25 +11,15 @@
       {{ form }}
       <button id ='submit' type="submit" onclick="buat()"> Post Komentar</button>
     </form>
-<<<<<<< HEAD
 </div>
+{% endif %}
+
 <div class="dalam-border">
-    {% for testimoni in isi %}
-    <h2>{{ testimoni.Username }}</h2>
-    <p>{{ testimoni.Pesan }}</p>
-    <h4>{{ testimoni.Tanggal_Pesan }}</h4>
-    {% endfor %}
+<div id="tampilkanTestimoni"></div>
 </div>
+{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{% static 'tampilkantestimoni.js' %}"></script>
 <script src={% static 'js/effect_about.js' %} type="text/javascript" charset="utf-8"></script>
 {% endblock %}
-=======
-    {% endif %}
 
-    <div id="tampilkanTestimoni">
-    </div>
-    {% load static %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{% static 'tampilkantestimoni.js' %}"></script>
-  </body>
-</html>
->>>>>>> 7cd8b41e72ec1249c563cb65bd8773e4f4f0551e

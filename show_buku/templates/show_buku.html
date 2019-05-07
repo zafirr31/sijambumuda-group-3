@@ -1,5 +1,6 @@
 {% extends 'base.html' %} 
 {% block content %}
+{% load static %}
     <h1 class="title-center" style="margin-left: 20%; margin-right: 20%; margin-top:5%;padding: 3%;">Daftar Buku</h1>
         {% for data in data_base %}
         <div class="border">
@@ -22,4 +23,5 @@
         </div>
         {% endfor %}
     </div>
+    <script src={% static 'js/effect.js' %} type="text/javascript" charset="utf-8"></script>
 {% endblock %}

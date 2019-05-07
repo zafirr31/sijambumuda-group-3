@@ -1,9 +1,9 @@
 $(document).ready(function () {
     let currentbg = $(".container-fluid").css("background-color");
-    let currenttopborder = $(".dalam-border").css("border-top-color");
-    let currentleftborder = $(".dalam-border").css("border-left-color");
-    let currentrightborder = $(".dalam-border").css("border-right-color");
-    let currentbottomborder = $(".dalam-border").css("border-bottom-color");
+    let currenttopborder = $(".data-border").css("border-top-color");
+    let currentleftborder = $(".data-border").css("border-left-color");
+    let currentrightborder = $(".data-border").css("border-right-color");
+    let currentbottomborder = $(".data-border").css("border-bottom-color");
     let currentbutton = $(".btn-primary").css("background-color");
 
     let expectbg = "rgb(255, 108, 99)";
@@ -19,28 +19,28 @@ $(document).ready(function () {
 
     $("#switch").mouseenter(function () {
         $(".container-fluid").css("background-color", expectbg);
-        $(".dalam-border").css("border-top-color", expecttopborder);
-        $(".dalam-border").css("border-left-color", expectleftborder);
-        $(".dalam-border").css("border-right-color", expectrightborder);
-        $(".dalam-border").css("border-bottom-color", expectbottomborder);
+        $(".data-border").css("border-top-color", expecttopborder);
+        $(".data-border").css("border-left-color", expectleftborder);
+        $(".data-border").css("border-right-color", expectrightborder);
+        $(".data-border").css("border-bottom-color", expectbottomborder);
         $(".btn-primary").css("background-color", expectbutton);
     });
 
     $("#switch").mouseleave(function () {
         $(".container-fluid").css("background-color", currentbg);
-        $(".dalam-border").css("border-top-color", currenttopborder);
-        $(".dalam-border").css("border-left-color", currentleftborder);
-        $(".dalam-border").css("border-right-color", currentrightborder);
-        $(".dalam-border").css("border-bottom-color", currentbottomborder);
+        $(".data-border").css("border-top-color", currenttopborder);
+        $(".data-border").css("border-left-color", currentleftborder);
+        $(".data-border").css("border-right-color", currentrightborder);
+        $(".data-border").css("border-bottom-color", currentbottomborder);
         $(".btn-primary").css("background-color", currentbutton);
     });
 
     $("#switch").click(function () {
         $(".container-fluid").css("background-color", expectbg);
-        $(".dalam-border").css("border-top-color", expecttopborder);
-        $(".dalam-border").css("border-left-color", expectleftborder);
-        $(".dalam-border").css("border-right-color", expectrightborder);
-        $(".dalam-border").css("border-bottom-color", expectbottomborder);
+        $(".data-border").css("border-top-color", expecttopborder);
+        $(".data-border").css("border-left-color", expectleftborder);
+        $(".data-border").css("border-right-color", expectrightborder);
+        $(".data-border").css("border-bottom-color", expectbottomborder);
         $(".btn-primary").css("background-color", expectbutton);
         if (expectbg == "rgb(255, 108, 99)") {
             expectbg = "rgb(108, 99, 255)";

@@ -1,6 +1,5 @@
 {% extends 'base.html' %} {% block content %}
 {% load static %}
-<script src="{% static 'js/effect.js' %}"></script>
 <div class="dalam-border" style="color:black;">
   <h1 class="title-center">Peminjaman Buku</h1>
   <hr />
@@ -26,4 +25,6 @@
     </button>
   </form>
 </div>
+
+<script src={% static 'js/effect.js' %} type="text/javascript" charset="utf-8"></script>
 {% endblock %}

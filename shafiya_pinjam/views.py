@@ -30,11 +30,19 @@ def pinjam(request):
                     pinjam_model.save()
                     messages.success(
                         request, "Terima kasih!\n Peminjaman Anda akan segera diproses.")
+<<<<<<< HEAD
                     return HttpResponseRedirect('/form-pinjam')
                 else:
                     messages.info(
                         request, "Maaf, buku habis")
                     return HttpResponseRedirect('/form-pinjam')
+=======
+                    pinjam_model.save()
+                else:
+                    messages.info(
+                        request, "Maaf, buku habis")
+                return HttpResponseRedirect('/')
+>>>>>>> 7cd8b41e72ec1249c563cb65bd8773e4f4f0551e
         else:
             pinjam_form = PinjamForm()
     else:

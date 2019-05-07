@@ -30,6 +30,7 @@ urlpatterns = [
     path('', include('form_anggota.urls')),
     path('registrasi-member/', include('form_anggota.urls')),
     path('history/', include('history_pinjaman.urls')),
+    path('about-dan-testimoni/', include('About_dan_Testimoni.urls'))
 ]
 
 urlpatterns += staticfiles_urlpatterns()

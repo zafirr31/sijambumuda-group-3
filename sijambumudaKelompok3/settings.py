@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'data_peminjaman',
     'history_pinjaman',
     'social_django',
+    'About_dan_Testimoni',
 ]
 
 MIDDLEWARE = [
@@ -130,11 +131,19 @@ USE_L10N = True
 USE_TZ = True
 
 AUTHENTICATION_BACKENDS = (
+    << << << < HEAD
     'social_core.backends.open_id.OpenIdAuth',
     'social_core.backends.google.GoogleOpenId',
     'social_core.backends.google.GoogleOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
+    == == == =
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+    >>>>>> > b5204b0f3e97a2627eedaea23a4870dccfa74068
 )
 
 SOCIAL_AUTH_PIPELINE = (
@@ -179,7 +188,10 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '517078907196-b73bejtrqsnkg373c4c9fcnii6jcedn0.a
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '517078907196-eddk7a4o47t95jfcpgc148h6uiksgcjk.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'PZqa8wGztvcI4v70abJ1jEUU'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'eJVCmbNX7YVJ2vRWIgt2-HBY'
+<< << << < HEAD
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.user_details',
 )
+== == == =
+>>>>>> > b5204b0f3e97a2627eedaea23a4870dccfa74068

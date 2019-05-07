@@ -23,12 +23,12 @@ $("#id_username").change(function()	{
     		data: {'username': username},
     		success: function (data) {
     			if(data == "True")	{
-    				$("#id_username").removeClass("is-invalid");
+    				$("#id_username").removeClass("has-error");
     				$("#usernameError").remove();
     				
     			}
     			else	{
-    				$("#id_username").addClass("is-invalid").after(`<small id=\"usernameError\" class=\"text-danger\">Username already taken</small>`);
+    				$("#id_username").addClass("has-error").after(`<small id=\"usernameError\" class=\"text-danger\">Username already taken</small>`);
     			}
     		}
     	});
@@ -46,14 +46,13 @@ $("#id_email").change(function()	{
     		type: 'POST',
     		data: {'email': email},
     		success: function (data) {
-    			console.log(data)
     			if(data == "True")	{
-    				$("#id_email").removeClass("is-invalid");
+    				$("#id_email").removeClass("has-error");
     				$("#emailError").remove();
     				
     			}
     			else	{
-    				$("#id_email").addClass("is-invalid").after(`<small id=\"emailError\" class=\"text-danger\">Email already taken</small>`);
+    				$("#id_email").addClass("has-error").after(`<small id=\"emailError\" class=\"text-danger\">Email already taken</small>`);
     			}
     		}
     	});

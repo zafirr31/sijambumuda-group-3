@@ -11,7 +11,9 @@
 			Login
 		</button>
 		<p><strong>-- OR --</strong></p>
-		<a href="{% url 'social:begin' 'google-oauth2' %}" style="color: blue">Login with Google</a><br />
+		<a href="{% url 'social:begin' 'google-oauth2' %}"><img src="/static/images/google.png" alt="Login with Google"></a><br />
 	</form>
 </div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="/static/js/checkRegisterForms.js" type="text/javascript" charset="utf-8" async defer></script>
 {% endblock %}

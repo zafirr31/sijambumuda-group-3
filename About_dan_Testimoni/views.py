@@ -31,4 +31,4 @@ def create(request):
             Tanggal_Pesan = tanggal_pesan
         )
         newTestimoni.save()
-        return HttpResponseRedirect('/about-dan-testimoni/')
+    return HttpResponseRedirect('/about-dan-testimoni/')

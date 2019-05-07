@@ -1,36 +1,4 @@
-$(document).ready(function() {
-  show();
-  // $('#submit').click(function() {
-  //     $.ajax({
-  //         url : "buat/",
-  //         type: "POST",
-  //         data : {
-  //             pesan:$("#id_Pesan").val(),
-  //             csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val(),
-  //         },
-  //         success : function() {
-  //             $("#id_Pesan").val("");
-  //         }
-  //     });
-  //
-  // });
-});
-
-// $('#submit').click(function() {
-//     $.ajax({
-//         url : "buat/",
-//         type: "POST",
-//         data : {
-//             pesan:$("#id_Pesan").val(),
-//             csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val(),
-//         },
-//         success : function() {
-//             $("#id_Pesan").val("");
-//         }
-//     });
-//
-// });
-
+show();
 function show() {
   $.ajax({
       url: "tampil/",

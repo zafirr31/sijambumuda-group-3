@@ -4,6 +4,7 @@ from django.urls import resolve
 from django.http import HttpRequest
 from shafiya_pinjam.apps import ShafiyaPinjamConfig
 from django.apps import apps
+from django.contrib.auth.models import User
 
 from .views import *
 from .models import PinjamModel
@@ -12,20 +13,11 @@ import datetime
 
 
 class SampleTest(TestCase):
-    # test eksistensi page form pinjam
-    # def test_page_form_pinjam(self):
-    #     response = Client().get('/form-pinjam/')
-    #     self.assertEqual(response.status_code,200)
 
     def test_form_pinjam_using_index_func(self):
         found = resolve('/form-pinjam/')
         self.assertEqual(found.func, pinjam)
 
-    # def test_status_template_form_pinjam_used(self):
-    #     response = Client().get('/form-pinjam/')
-    #     self.assertTemplateUsed(response, 'page/form-pinjam.html')
-
-    # test untuk model
     def test_pinjam_models_created(self):
         time = datetime.datetime.now()
         dummy_pinjam = PinjamModel.objects.create(
@@ -44,30 +36,6 @@ class SampleTest(TestCase):
             form.errors['nomor_buku'],
             ['This field is required.']
         )
-
-    # def test_form(self):
-    #     time = datetime.datetime.now()
-    #     buku = Buku.objects.create(
-    #         nomor_buku = 1,
-    #         judul_buku = "Test Judul",
-    #         pengarang = "Test Pengarang",
-    #         kategori = "Test Kategori",
-    #         penerbit = "Test Penerbit",
-    #         sinopsis = "Test Sinopsis",
-    #     )
-    #     member = Member.objects.create(
-    #         username = "test",
-    #         email = "test@test.com",
-    #         password = "hahahahahah"
-    #     )
-    #     Client().post('/form-pinjam/', {"username": "test", "email": "test@test.com", "nomor_buku": 1})
-    #     response1 = Client().get('/datapeminjaman/')
-    #     self.assertIn("<b>Judul Buku:</b> Test Judul; <b>Peminjam:</b> test; <b>Tanggal Peminjaman:</b> " + time.strftime("%B %d, %Y"), response1.content.decode('utf-8'))
-
-    # def test_buku_doesnt_exist(self):
-    #     response = Client().post("/form-pinjam/", {"nomor_buku": "1"})
-    #     self.assertIn("Buku tidak ada", response.content.decode('utf-8'))
-
 
 class ConfigTest(TestCase):
     def test_apps(self):

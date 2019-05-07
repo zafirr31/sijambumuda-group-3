@@ -14,8 +14,8 @@ def about(request):
                 Tanggal_Pesan = datetime.datetime.now()
                 )
                 model_testimoni.save()
-            isi = Testimoni.objects.all()
-            return HttpResponseRedirect('/about-dan-testimoni/')
+                isi = Testimoni.objects.all()
+                return HttpResponseRedirect('/about-dan-testimoni/')
 
             formTestimoni = IsiTestimoni()
             isi = Testimoni.objects.all()

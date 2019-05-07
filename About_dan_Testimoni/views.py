@@ -18,9 +18,9 @@ def about(request):
                 isi = Testimoni.objects.all()
                 return HttpResponseRedirect('/about-dan-testimoni/')
 
-            formTestimoni = IsiTestimoni()
-            isi = Testimoni.objects.all()
-            return render(request, 'about_dan_testimoni.html', {'form' : formTestimoni, 'isi' : isi})
+        formTestimoni = IsiTestimoni()
+        isi = Testimoni.objects.all()
+        return render(request, 'about_dan_testimoni.html', {'form' : formTestimoni, 'isi' : isi})
 
     isi = Testimoni.objects.all()
     return render(request, 'about_dan_testimoni.html', {'isi' : isi})

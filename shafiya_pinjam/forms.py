@@ -1,6 +1,5 @@
 from django import forms
 from .models import PinjamModel
-from form_anggota.models import Member
 from show_buku.models import Buku
 
 

@@ -2,6 +2,7 @@ from django.shortcuts import render
 import datetime
 from .models import Testimoni
 from .forms import IsiTestimoni
+from django.http import HttpResponseRedirect
 
 def about(request):
     if request.user.is_authenticated:

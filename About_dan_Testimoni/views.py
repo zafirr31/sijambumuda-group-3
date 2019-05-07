@@ -4,12 +4,12 @@ from .models import Testimoni
 from .forms import IsiTestimoni
 
 def about(request):
-    if request.session.has_key('username'):
+    if request.user.is_authenticated:
         if request.method == 'POST':
             formTestimoni = IsiTestimoni(request.POST)
             if formTestimoni.is_valid():
                 model_testimoni = Testimoni(
-                Username = request.session['username'],
+                Username = request.user.username,
                 Pesan = formTestimoni.cleaned_data['Pesan'],
                 Tanggal_Pesan = datetime.datetime.now()
                 )

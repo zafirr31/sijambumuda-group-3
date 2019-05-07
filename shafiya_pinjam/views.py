@@ -11,17 +11,21 @@ from django.contrib import messages
 
 
 def pinjam(request):
-    if request.session.has_key('username'):
+    if request.user.is_authenticated:
         if request.method == 'POST':
             pinjam_form = PinjamForm(request.POST)
             if pinjam_form.is_valid():
-                username = request.session['username']
+                username = request.user.username
                 # email = Member.objects.get(username=username)['email']
                 nomor_buku = request.POST['nomor_buku']
                 tanggal_pinjam = datetime.datetime.now()
-
-                pinjam_model = PinjamModel.objects.create(username=username, nomor_buku=nomor_buku,
-                                                          tanggal_pinjam=tanggal_pinjam)
+                buku = Buku.objects.get(nomor_buku=nomor_buku)
+                if buku.kuota >= 1:
+                    buku.kuota -= 1
+                    pinjam_model = PinjamModel.objects.create(username=username, nomor_buku=nomor_buku,
+                                                              tanggal_pinjam=tanggal_pinjam)
+                else:
+                    buku.kuota = 0
                 pinjam_model.save()
                 messages.success(
                     request, "Terima kasih!\n Peminjaman Anda akan segera diproses.")

@@ -12,6 +12,11 @@
                 <p class="mb-0"><b>Kategori</b>      : {{ data.kategori }}</p>
                 <p class="mb-0"><b>Penerbit</b>      : {{ data.penerbit }}</p>
                 <p class="mb-10"><b>Sinopsis</b>      : {{ data.sinopsis }}</p>
+                {% if data.kuota == 0 %}
+                <td class="empty"> Buku habis </td>
+                {% else %}
+                <td> {{data.kuota}} </td>
+                {% endif %}
             </div>
             </div>
         </div>

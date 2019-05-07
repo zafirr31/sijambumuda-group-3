@@ -6,8 +6,10 @@ from django.http import HttpResponseRedirect, JsonResponse
 # Create your views here.
 # @login_required
 
+
 def show_history(request):
     return render(request, 'history.html')
+
 
 def history_json(request):
     if request.user.is_authenticated:

@@ -85,8 +85,3 @@ class RegisterMember(forms.Form):
 		clean_username(self)
 		clean_email(self)
 		clean_password(self)
-
-class LoginMember(forms.Form):
-
-	username = forms.CharField()
-	password = forms.CharField(min_length=8, widget=forms.PasswordInput())

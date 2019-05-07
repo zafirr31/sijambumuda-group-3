@@ -36,16 +36,19 @@
         <div id = "about">
     <h1>Tentang SijambuMuda</h1>
     <p>SiJambuMuda Merupakan sebuah website peminjaman buku</p>
-    </div>
+  </div>
     {% if user.is_authenticated %}
     <form method="POST">
       {% csrf_token %}
       {{ form }}
-      <button type="submit"> Post Komentar</button>
+      <button id ='submit' type="submit" onclick="buat()"> Post Komentar</button>
     </form>
     {% endif %}
 
     <div id="tampilkanTestimoni">
     </div>
+    {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'tampilkantestimoni.js' %}"></script>
   </body>
 </html>

@@ -40,3 +40,8 @@ def check_email(request):
 		if re.search(email, i['email']):
 			not_taken = False
 	return HttpResponse(str(not_taken))
+
+def check_password(request):
+	password = request.POST.get('password')
+	re_password = request.POST.get('re_password')
+	return HttpResponse(str(password==re_password))

@@ -23,12 +23,16 @@ $("#id_username").change(function()	{
     		data: {'username': username},
     		success: function (data) {
     			if(data == "True")	{
+                    $("#usernameSuccess").remove();
     				$("#id_username").removeClass("has-error");
+                    $("#id_username").addClass("has-success").after(`<small id=\"usernameSuccess\" class=\"text-success\">Username available</small>`);;
     				$("#usernameError").remove();
-    				
     			}
     			else	{
+                    $("#usernameError").remove();
+                    $("#id_username").removeClass("has-success")
     				$("#id_username").addClass("has-error").after(`<small id=\"usernameError\" class=\"text-danger\">Username already taken</small>`);
+                    $("#usernameSuccess").remove();
     			}
     		}
     	});
@@ -52,8 +56,41 @@ $("#id_email").change(function()	{
     				
     			}
     			else	{
+                    $("#emailError").remove();
     				$("#id_email").addClass("has-error").after(`<small id=\"emailError\" class=\"text-danger\">Email already taken</small>`);
     			}
     		}
     	});
 });
+
+$("#id_password").change(function()    {
+    checkPass();
+});
+$("#id_re_password").change(function()    {
+    checkPass();
+});
+
+function checkPass() {
+    password = $("#id_password").val()
+    re_password = $("#id_re_password").val()
+    $.ajaxSetup({
+        headers: { 
+            "X-CSRFToken": csrftoken,
+        }
+    });
+    $.ajax({
+            url: '/check-password/',
+            type: 'POST',
+            data: {'password': password, 're_password': re_password},
+            success: function (data) {
+                if(data == "True")    {
+                    $("#id_re_password").removeClass("has-error");
+                    $("#passwordError").remove();
+                }
+                else    {
+                    $("#passwordError").remove();
+                    $("#id_re_password").addClass("has-error").after(`<small id=\"passwordError\" class=\"text-danger\">Passwords do not match!</small>`);
+                }
+            }
+        });
+}

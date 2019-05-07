@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'sijambumudaKelompok3.urls'
 
 TEMPLATES = [
@@ -134,10 +135,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.open_id.OpenIdAuth',
     'social_core.backends.google.GoogleOpenId',
     'social_core.backends.google.GoogleOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-    'social_core.backends.open_id.OpenIdAuth',
-    'social_core.backends.google.GoogleOpenId',
-    'social_core.backends.google.GoogleOAuth2',
+    
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -154,6 +152,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details',
     'social.pipeline.debug.debug',
 )
+
 SOCIAL_AUTH_GOOGLE_OAUTH2_IGNORE_DEFAULT_SCOPE = True
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
     'https://www.googleapis.com/auth/userinfo.email',
@@ -161,10 +160,6 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 ]
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
@@ -176,14 +171,10 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '517078907196-b73bejtrqsnkg373c4c9fcnii6jcedn0.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '517078907196-eddk7a4o47t95jfcpgc148h6uiksgcjk.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'PZqa8wGztvcI4v70abJ1jEUU'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'eJVCmbNX7YVJ2vRWIgt2-HBY'
-
-SOCIAL_AUTH_PIPELINE = (
-    'social_core.pipeline.user.user_details',
-)

@@ -1,47 +1,17 @@
-<!DOCTYPE html>
-<html>
-  {% load static %}
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Data Peminjaman</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/" style="color:#ffff; font-size:100%; margin-top:4%; ">SIJAMBU MUDA</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/registrasi-member"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;">Jadi Anggota</button></a></li>
-                <li><a href="/buku"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;""></span>Daftar Buku</button></a></li>
-                <li><a href="/form-pinjam"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Pinjam Buku</button></a></li>
-                <li><a href="/datapeminjaman"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Daftar Peminjaman</button></a></li>
-              </ul>
-            </div>
-        </div>
-        </nav> 
+{% extends 'base.html' %} {% block content %}
+<section>
+  <h1
+    class="title-center"
+    style="margin-left: 20%; margin-right: 20%; margin-top:5%;padding: 3%;"
+  >
+    Data Peminjaman
+  </h1>
+</section>
 
-	<section>
-		<h1 class="title-center" style="margin-left: 20%; margin-right: 20%; margin-top:5%;padding: 3%;">Data Peminjaman</h1>
-	</section>
-
-	{% for peminjaman in datapeminjaman %}
-		<div class="data-border">
-			<b>Judul Buku:</b> {{ peminjaman.buku_dipinjam }}; <b>Peminjam:</b> {{ peminjaman.nama_peminjam }}; <b>Tanggal Peminjaman:</b> {{ peminjaman.tanggal_pinjam }}
-		</div>
-	{% endfor %}
-
-</body>
-</html>
+{% for peminjaman in datapeminjaman %}
+<div class="data-border">
+  <b>Judul Buku:</b> {{ peminjaman.buku_dipinjam }}; <b>Peminjam:</b>
+  {{ peminjaman.nama_peminjam }}; <b>Tanggal Peminjaman:</b>
+  {{ peminjaman.tanggal_pinjam }}
+</div>
+{% endfor %} {% endblock %}

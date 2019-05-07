@@ -1,48 +1,16 @@
-<!DOCTYPE html>
-<html>
-  {% load static %}
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SIJAMBU MUDA</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/" style="color:#ffff; font-size:100%; margin-top:4%; ">SIJAMBU MUDA</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/registrasi-member"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;">Jadi Anggota</button></a></li>
-                <li><a href="/buku"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Daftar Buku</button></a></li>
-                <li><a href="/form-pinjam"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Pinjam Buku</button></a></li>
-                <li><a href="/datapeminjaman"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Daftar Peminjaman</button></a></li>
-              </ul>
-            </div>
-        </div>
-        </nav> 
+{% extends 'base.html' %} 
+{% load static %}{% block content %}
     
     <div class="flex-container">
       <img src="{% static 'img/undraw_book_lover_mkck.svg' %}" class="landing-photo">
       <div class="mx-auto">
         <h1 class="judul">SIJAMBU MUDA</h1>
         <p class="singkatan">Sistem Peminjaman Buku Perpustakaan MUDA</p>
-        <a href="/registrasi-member"><button type="button" class="btn btn-primary">Daftar sekarang</button></a>
+        <a href="/register"><button type="button" class="btn btn-primary">Daftar sekarang</button></a>
       </div>
     </div>
     {% if user.is_authenticated %}
-      <p class="display-4">Hello, {{ user.username }}</p>
+      <p class="display-4">Hello, {{ user.first_name }}</p>
     {% else %}
       <a class="lead" href="{% url 'login' %}">Log in</a>
     {% endif %}
@@ -50,5 +18,4 @@
   <br>
   <br>
   <br>
-</body>
-</html>
+  {% endblock %}

@@ -5,7 +5,7 @@ from django.db import models
 
 class PinjamModel(models.Model):
     username = models.CharField(max_length=20)
-    email = models.EmailField(max_length=50)
+    email = models.EmailField(max_length=50, null=True, blank=True)
     nomor_buku = models.IntegerField()
     tanggal_pinjam = models.DateField(auto_now_add=True, blank=True)
     nama_peminjam = models.CharField(max_length=100)

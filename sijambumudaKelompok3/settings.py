@@ -59,9 +59,26 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'sijambumudaKelompok3.urls'
 
 TEMPLATES = [
+    << << << < HEAD
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [(os.path.join(BASE_DIR, 'templates'))],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
+            ],
+        },
+    },
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'form_anggota/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -159,5 +176,5 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'PZqa8wGztvcI4v70abJ1jEUU'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'eJVCmbNX7YVJ2vRWIgt2-HBY'
 
 SOCIAL_AUTH_PIPELINE = (
-'social_core.pipeline.user.user_details',
+    'social_core.pipeline.user.user_details',
 )

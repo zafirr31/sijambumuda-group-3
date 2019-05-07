@@ -36,22 +36,6 @@ class SampleTest(TestCase):
         )
         total_pinjam = PinjamModel.objects.all().count()
         self.assertEqual(total_pinjam, 1)
-    
-    def test_form_username_validated(self):
-        form = PinjamForm(data={'username':''})
-        self.assertFalse(form.is_valid())
-        self.assertEqual(
-            form.errors['username'],
-            ['This field is required.']
-        )
-
-    def test_form_email_validated(self):
-        form = PinjamForm(data={'email':''})
-        self.assertFalse(form.is_valid())
-        self.assertEqual(
-            form.errors['email'],
-            ['This field is required.']
-        )
 
     def test_form_nobuku_validated(self):
         form = PinjamForm(data={'nomor_buku': ''})
@@ -86,12 +70,8 @@ class SampleTest(TestCase):
             email = "test@test.com",
             password = "hahahahahah"
         )
-        response = Client().post("/form-pinjam/", {"username": "test", "email": "test@test.com", "nomor_buku": "1"})
+        response = Client().post("/form-pinjam/", {"nomor_buku": "1"})
         self.assertIn("Buku tidak ada", response.content.decode('utf-8'))
-
-    def test_member_doesnt_exist(self):
-        response = Client().post("/form-pinjam/", {"username": "test", "email": "test@test.com", "nomor_buku": "1"})
-        self.assertIn("Username tidak ada", response.content.decode('utf-8'))
 
 class ConfigTest(TestCase):
     def test_apps(self):

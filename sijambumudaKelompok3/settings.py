@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 	'data_peminjaman',
 	'history_pinjaman',
 	'social_django',
+	'About_dan_Testimoni',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +134,7 @@ AUTHENTICATION_BACKENDS = (
 	'social_core.backends.open_id.OpenIdAuth',
 	'social_core.backends.google.GoogleOpenId',
 	'social_core.backends.google.GoogleOAuth2',
-	
+
 	'django.contrib.auth.backends.ModelBackend',
 )
 

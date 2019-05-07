@@ -37,17 +37,15 @@
     <h1>Tentang SijambuMuda</h1>
     <p>SiJambuMuda Merupakan sebuah website peminjaman buku</p>
     </div>
-
+    {% if user.is_authenticated %}
     <form method="POST">
       {% csrf_token %}
       {{ form }}
       <button type="submit"> Post Komentar</button>
     </form>
-    {% for testimoni in isi %}
-    <h2>{{ testimoni.Username }}</h2>
-    <p>{{ testimoni.Pesan }}</p>
-    <h4>{{ testimoni.Tanggal_Pesan }}</h4>
-    {% endfor %}
-  </body>
+    {% endif %}
+
+    <div id="tampilkanTestimoni">
+    </div>
   </body>
 </html>

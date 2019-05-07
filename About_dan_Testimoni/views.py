@@ -2,7 +2,7 @@ from django.shortcuts import render
 import datetime
 from .models import Testimoni
 from .forms import IsiTestimoni
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 
 def about(request):
     if request.user.is_authenticated:
@@ -15,12 +15,16 @@ def about(request):
                 Tanggal_Pesan = datetime.datetime.now()
                 )
                 model_testimoni.save()
-                isi = Testimoni.objects.all()
                 return HttpResponseRedirect('/about-dan-testimoni/')
 
         formTestimoni = IsiTestimoni()
-        isi = Testimoni.objects.all()
-        return render(request, 'about_dan_testimoni.html', {'form' : formTestimoni, 'isi' : isi})
+        return render(request, 'about_dan_testimoni.html', {'form' : formTestimoni})
 
-    isi = Testimoni.objects.all()
-    return render(request, 'about_dan_testimoni.html', {'isi' : isi})
+def tampilkan(request):
+    isiTestimoni = Testimoni.objects.all()
+    listTestimoni = []
+
+    for data in isiTestimoni :
+        listTestimoni.append({"Username" : data.Username, "Pesan" : data.Pesan, "Tanggal_Pesan" : data.Tanggal_Pesan})
+
+    return JsonResponse(listTestimoni, safe=False)

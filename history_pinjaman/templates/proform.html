@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %} 
+
+    <h1 class="title-center" style="margin-left: 20%; margin-right: 20%; margin-top:5%;padding: 3%;">Update Profile</h1>
+    <form enctype="multipart/form-data" method ="POST" class="form-horizontal">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <button type="submit" class="btn btn-primary" style="display: block; margin: 0 auto; margin-top:5%; width:30%; ">Submit</button>
+    </form>
+
+{% endblock %}

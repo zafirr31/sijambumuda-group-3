@@ -34,7 +34,7 @@ def pinjam(request):
                 pinjam_model.save()
                 return HttpResponseRedirect('/')
         else:
-            pinjam_form = PinjamForm(request.POST)
+            pinjam_form = PinjamForm()
     else:
         return HttpResponseRedirect('/login/')
     return render(request, 'page/form-pinjam.html', {'form': pinjam_form})

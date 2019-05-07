@@ -1,3 +1,25 @@
+<<<<<<< HEAD:form_anggota/templates/form_anggota.html
+{% extends 'base.html' %} {% block content %}
+<div class="dalam-border" style="color:black;">
+  <h1 class="title-center">Registrasi Anggota</h1>
+  <hr />
+  <form method="POST" class="form-horizontal">
+    {% csrf_token %}
+    <table>
+      <!-- prettier-ignore -->
+      {{ register_form }}
+    </table>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      style="display: block; margin: 0 auto; margin-top:5%; width:30%; "
+    >
+      Daftar
+    </button>
+  </form>
+</div>
+{% endblock %}
+=======
 <!DOCTYPE html>
 {% load static %}
 <html lang="en" dir="ltr">
@@ -46,3 +68,4 @@
 		<script src="/static/js/checkRegisterForms.js" type="text/javascript" charset="utf-8" async defer></script>
 	</body>
 </html>
+>>>>>>> 5030cda94e60ef373f48e4badb5cf4c5ac19adf1:form_anggota/templates/registration/register.html

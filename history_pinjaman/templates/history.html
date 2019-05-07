@@ -1,38 +1,40 @@
-<!DOCTYPE html>
-<html>
-  {% load static %}
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SIJAMBU MUDA</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/" style="color:#ffff; font-size:100%; margin-top:4%; ">SIJAMBU MUDA</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/registrasi-member"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;">Jadi Anggota</button></a></li>
-                <li><a href="/buku"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;""></span>Daftar Buku</button></a></li>
-                <li><a href="/form-pinjam"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Pinjam Buku</button></a></li>
-                <li><a href="/datapeminjaman"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Daftar Peminjaman</button></a></li>
-              </ul>
-            </div>
-        </div>
-        </nav> 
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="col-md-6" id="profile">
+      <p>Hi, {{ user.username }}</p>
+      <h1 class="title">Profile</h1>
+      <p id="username">Username : {{ user.username }}</p>
+      <img src="{{ profile.profile_picture.url }}" alt="" class="img-responsive">
+      <p id="alamat">Alamat : {{ profile.alamat_rumah }}</p>
+      <a href="/history/profile/">
+          <button 
+          type="button" 
+          class="btn btn-default navbar-btn" 
+          style="background-color:#ffff;">
+          </span>Edit Profile</button>
+      </a>
+  </div>
+  <div class="col-md-6" id="buku">
+      <h1 class="title">Daftar Buku Yang Dipinjam</h1>
+      <ul id="history_buku"></ul>
+  </div>
+</div>
 
+<<<<<<< HEAD
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+      crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+      crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+      crossorigin="anonymous"></script>
+
+{% load static %} 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{% static 'janscript.js' %}"></script>
+=======
     <div class="container">
         <div class="col-md-6" id="profile">
             <p>Hi, {{ user.username }}</p>
@@ -53,19 +55,7 @@
             <ul id="history_buku"></ul>
         </div>
     </div>
+>>>>>>> c70cf14e65b40dae370759ed8db67a124dedf792
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
-            crossorigin="anonymous"></script>
-    
-    {% load static %} 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{% static 'janscript.js' %}"></script>
 
-    </body>
+{% endblock %}

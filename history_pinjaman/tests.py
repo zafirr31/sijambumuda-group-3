@@ -5,6 +5,7 @@ from django.http import HttpRequest
 from .views import show_history, history_json, profile
 from django.contrib.auth.models import User
 
+
 class HistoryPinjamTest(TestCase):
 
     def test_history_url_no_login(self):

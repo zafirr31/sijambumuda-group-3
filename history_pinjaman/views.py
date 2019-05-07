@@ -9,16 +9,18 @@ from django.http import HttpResponseRedirect, JsonResponse
 # Create your views here.
 # @login_required
 
+
 def show_history(request):
     if request.user.is_authenticated:
         username = request.user.username
         user = User.objects.get(username=username)
         if Profile.objects.filter(user=user).exists():
             profile = Profile.objects.get(user=user)
-            return render(request, 'history.html', {'profile':profile, 'username':username})
-        else :
+            return render(request, 'history.html', {'profile': profile, 'username': username})
+        else:
             return render(request, 'history.html')
     return HttpResponseRedirect("/login/")
+
 
 def history_json(request):
     if request.user.is_authenticated:
@@ -37,21 +39,23 @@ def history_json(request):
         return JsonResponse(response_data, safe=False)
     return HttpResponseRedirect("/")
 
+
 def profile(request):
     if request.user.is_authenticated:
-        if request.method == "POST" :
+        if request.method == "POST":
             form = ProfileForm(request.POST, request.FILES)
-            if form.is_valid() :
+            if form.is_valid():
                 user = User.objects.get(username=request.user.username)
                 propic = request.FILES['profile_picture']
                 address = form.cleaned_data["alamat_rumah"]
-                if Profile.objects.filter(user=user).exists() :
+                if Profile.objects.filter(user=user).exists():
                     query = Profile.objects.get(user=user)
                     query.delete()
-                profile = Profile(user=user, profile_picture=propic, alamat_rumah=address)
+                profile = Profile(
+                    user=user, profile_picture=propic, alamat_rumah=address)
                 profile.save()
                 return HttpResponseRedirect("/history/")
-        else :
+        else:
             form = ProfileForm()
         return render(request, "proform.html", {"form": form})
     return HttpResponseRedirect("/login/")

@@ -75,7 +75,6 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'social.apps.django_app.context_processors.backends',
                 'social.apps.django_app.context_processors.login_redirect',
-                'django.contrib.messages.context_processors.messages',
             ],
         },
     },

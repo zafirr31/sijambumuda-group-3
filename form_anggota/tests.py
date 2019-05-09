@@ -55,7 +55,7 @@ class FormAnggota(TestCase):
         test_client = Client()
         test_client.login(username="test123", password="TestPassword123")
         response = test_client.get('/')
-        self.assertIn("Test", response.content.decode('utf-8'))
+        self.assertIn("test123", response.content.decode('utf-8'))
 
         
 class ConfigTest(TestCase):

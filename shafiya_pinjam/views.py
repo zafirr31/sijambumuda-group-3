@@ -23,18 +23,21 @@ def pinjam(request):
                 if buku.kuota > 0:
                     buku.kuota = F('kuota') - 1
                     buku.save()
-                    judul_buku = Buku.objects.filter(nomor_buku=nomor_buku).values()[0]['judul_buku']
+                    judul_buku = Buku.objects.filter(nomor_buku=nomor_buku).values()[
+                        0]['judul_buku']
                     pinjam_model = PinjamModel.objects.create(username=username, buku_dipinjam=judul_buku, nomor_buku=nomor_buku,
                                                               tanggal_pinjam=tanggal_pinjam)
+                    pinjam_model.save()
                     messages.success(
                         request, "Terima kasih!\n Peminjaman Anda akan segera diproses.")
-                    pinjam_model.save()
+                    return HttpResponseRedirect('/form-pinjam')
                 else:
                     messages.info(
                         request, "Maaf, buku habis")
-                return HttpResponseRedirect('/')
+                    return HttpResponseRedirect('/form-pinjam')
         else:
             pinjam_form = PinjamForm()
     else:
+        alert = None
         return HttpResponseRedirect('/login/')
     return render(request, 'page/form-pinjam.html', {'form': pinjam_form})

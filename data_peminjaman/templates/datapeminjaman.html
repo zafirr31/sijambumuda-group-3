@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% block content %}
+{% load static %}
 <section>
   <h1
     class="title-center"
@@ -14,4 +15,5 @@
   {{ peminjaman.username }}; <b>Tanggal Peminjaman:</b>
   {{ peminjaman.tanggal_pinjam }}
 </div>
+<script src={% static 'js/effect_data.js' %} type="text/javascript" charset="utf-8"></script>
 {% endfor %} {% endblock %}

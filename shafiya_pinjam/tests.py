@@ -38,51 +38,55 @@ class SampleTest(TestCase):
         )
 
     def test_buku_no_kuota(self):
-        User.objects.create_user('test123', 'test@test.com', 'TestPassword123', first_name="Test")
+        User.objects.create_user(
+            'test123', 'test@test.com', 'TestPassword123', first_name="Test")
         buku = Buku.objects.create(
-            nomor_buku = 1,
-            judul_buku = "Test Judul",
-            pengarang = "Test Pengarang",
-            kategori = "Test Kategori",
-            penerbit = "Test Penerbit",
-            sinopsis = "Test Sinopsis",
-            kuota = 0,
+            nomor_buku=1,
+            judul_buku="Test Judul",
+            pengarang="Test Pengarang",
+            kategori="Test Kategori",
+            penerbit="Test Penerbit",
+            sinopsis="Test Sinopsis",
+            kuota=0,
         )
         test_client = Client()
         test_client.login(username="test123", password="TestPassword123")
         test_client.post('/form-pinjam/', {'nomor_buku': 1})
         response = test_client.get('/datapeminjaman/')
-        self.assertNotIn('test123', response.content.decode('utf-8'))
+        self.assertNotIn('Test Judul', response.content.decode('utf-8'))
 
     def test_not_logged_in(self):
-        User.objects.create_user('test123', 'test@test.com', 'TestPassword123', first_name="Test")
+        User.objects.create_user(
+            'test123', 'test@test.com', 'TestPassword123', first_name="Test")
         buku = Buku.objects.create(
-            nomor_buku = 1,
-            judul_buku = "Test Judul",
-            pengarang = "Test Pengarang",
-            kategori = "Test Kategori",
-            penerbit = "Test Penerbit",
-            sinopsis = "Test Sinopsis",
-            kuota = 0,
+            nomor_buku=1,
+            judul_buku="Test Judul",
+            pengarang="Test Pengarang",
+            kategori="Test Kategori",
+            penerbit="Test Penerbit",
+            sinopsis="Test Sinopsis",
+            kuota=0,
         )
         test_client = Client()
         response = test_client.post('/form-pinjam/', {'nomor_buku': 1})
 
     def test_with_get(self):
-        User.objects.create_user('test123', 'test@test.com', 'TestPassword123', first_name="Test")
+        User.objects.create_user(
+            'test123', 'test@test.com', 'TestPassword123', first_name="Test")
         buku = Buku.objects.create(
-            nomor_buku = 1,
-            judul_buku = "Test Judul",
-            pengarang = "Test Pengarang",
-            kategori = "Test Kategori",
-            penerbit = "Test Penerbit",
-            sinopsis = "Test Sinopsis",
-            kuota = 0,
+            nomor_buku=1,
+            judul_buku="Test Judul",
+            pengarang="Test Pengarang",
+            kategori="Test Kategori",
+            penerbit="Test Penerbit",
+            sinopsis="Test Sinopsis",
+            kuota=0,
         )
         test_client = Client()
         test_client.login(username="test123", password="TestPassword123")
         response = test_client.get('/form-pinjam/', {'nomor_buku': 1})
         self.assertIn("Peminjaman Buku", response.content.decode('utf-8'))
+
 
 class ConfigTest(TestCase):
     def test_apps(self):

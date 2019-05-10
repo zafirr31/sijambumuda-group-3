@@ -7,11 +7,14 @@ function show() {
       success: function(data) {
         var innerHTML = '';
           for(var i = 0; i < data.length; i++){
-            var encodedStr = data[i].Pesan.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+            var encodedStr_pesan = data[i].Pesan.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
               return '&#'+i.charCodeAt(0)+';';
             });
-            username = '<h2>' + data[i].Username + '</h2>';
-            pesan = '<p>' + encodedStr + '</p>';
+             var encodedStr_username = data[i].Username.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+              return '&#'+i.charCodeAt(0)+';';
+            });
+            username = '<h2>' + encodedStr_username + '</h2>';
+            pesan = '<p>' + encodedStr_pesan + '</p>';
             tanggal_pesan = '<h4>' + data[i].Tanggal_Pesan + '</h4>';
 
             innerHTML += username + pesan + tanggal_pesan;

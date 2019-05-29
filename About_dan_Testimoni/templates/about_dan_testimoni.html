@@ -1,38 +1,6 @@
-<!DOCTYPE html>
+{% extends 'base.html' %} {% block content %}
 {% load static %}
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Form Anggota</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  </head>
-  <body>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/" style="color:#ffff; font-size:100%; margin-top:4%; ">SIJAMBU MUDA</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/registrasi-member"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;">Jadi Anggota</button></a></li>
-                <li><a href="/buku"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Daftar Buku</button></a></li>
-                <li><a href="/form-pinjam"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Pinjam Buku</button></a></li>
-                <li><a href="/datapeminjaman"><button type="button" class="btn btn-default navbar-btn" style="background-color:#ffff;"></span>Daftar Peminjaman</button></a></li>
-              </ul>
-            </div>
-        </div>
-        </nav>
-
+<div class="dalam-border" style="margin-bottom: 5px;">
         <div id = "about">
     <h1>Tentang SijambuMuda</h1>
     <p>SiJambuMuda Merupakan sebuah website peminjaman buku</p>
@@ -43,11 +11,13 @@
       {{ form }}
       <button type="submit"> Post Komentar</button>
     </form>
+</div>
+<div class="dalam-border">
     {% for testimoni in isi %}
     <h2>{{ testimoni.Username }}</h2>
     <p>{{ testimoni.Pesan }}</p>
     <h4>{{ testimoni.Tanggal_Pesan }}</h4>
     {% endfor %}
-  </body>
-  </body>
-</html>
+</div>
+<script src={% static 'js/effect_about.js' %} type="text/javascript" charset="utf-8"></script>
+{% endblock %}

@@ -1,12 +1,15 @@
 {% extends 'base.html' %} 
 {% load static %}{% block content %}
-    
+<div class="loader"></div>
     <div class="flex-container">
       <img src="{% static 'img/undraw_book_lover_mkck.svg' %}" class="landing-photo">
       <div class="mx-auto">
         <h1 class="judul">SIJAMBU MUDA</h1>
+        {% if user.is_authenticated %}
         <p class="singkatan">Sistem Peminjaman Buku Perpustakaan MUDA</p>
+        {% else %}
         <a href="/register"><button type="button" class="btn btn-primary">Daftar sekarang</button></a>
+        {% endif %}
       </div>
     </div>
     {% if user.is_authenticated %}
@@ -14,7 +17,7 @@
       <a class="lead" href="{% url 'login' %}">Log in</a>
     {% endif %}
   </div>
-  <script src={% static 'js/effect.js' %} type="text/javascript" charset="utf-8"></script>
+  <script src={% static 'js/effect_landing.js' %} type="text/javascript" charset="utf-8"></script>
   <br>
   <br>
   <br>
